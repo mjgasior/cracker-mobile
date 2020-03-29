@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';
@@ -12,13 +12,13 @@ import useLinking from './navigation/useLinking';
 const Stack = createStackNavigator();
 
 export default function App(props) {
-  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
-  const [initialNavigationState, setInitialNavigationState] = React.useState();
-  const containerRef = React.useRef();
+  const [isLoadingComplete, setLoadingComplete] = useState(false);
+  const [initialNavigationState, setInitialNavigationState] = useState();
+  const containerRef = useRef();
   const { getInitialState } = useLinking(containerRef);
 
   // Load any resources or data that we need prior to rendering the app
-  React.useEffect(() => {
+  useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
         SplashScreen.preventAutoHide();
