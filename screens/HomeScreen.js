@@ -12,6 +12,11 @@ const CustomizedText = styled.Text`
   color: #0F4C81;
 `;
 
+const LogoContainer = styled.View`
+  margin-top: 10px;
+  align-items: center;
+`;
+
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
@@ -40,6 +45,14 @@ export default function HomeScreen() {
             Change any of the text, save the file, and your app will automatically reload.
           </Text>
         </View>
+
+
+        <LogoContainer>
+          <Image
+            source={require('../assets/images/cracker-logo.png')}
+            style={styles.welcomeImage}
+          />
+        </LogoContainer>
 
         <View style={styles.helpContainer}>
           <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
