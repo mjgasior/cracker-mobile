@@ -2,8 +2,15 @@ import React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import * as WebBrowser from 'expo-web-browser';
+import styled from 'styled-components/native';
 
 import { MonoText } from '../components/StyledText';
+
+const CustomizedText = styled.Text`
+  font-size: 16px;
+  text-align: center;
+  color: #0F4C81;
+`;
 
 export default function HomeScreen() {
   return (
@@ -23,7 +30,7 @@ export default function HomeScreen() {
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
-          <Text style={styles.getStartedText}>Open up the code for this screen:</Text>
+          <CustomizedText>This is like śmietana:</CustomizedText>
 
           <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
             <MonoText>screens/HomeScreen.js</MonoText>
@@ -66,8 +73,7 @@ function DevelopmentModeNotice() {
 
     return (
       <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use useful development
-        tools. {learnMoreButton}
+        This is an app for tourism. {learnMoreButton}
       </Text>
     );
   } else {
