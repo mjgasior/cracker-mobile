@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import * as Permissions from "expo-permissions";
-// import * as Location from "expo-location";
+import * as Location from "expo-location";
 
 export const useLocation = () => {
-  const [permissions, setPermissions] = useState({});
+  const [location, setLocation] = useState();
 
   useEffect(() => {
     async function setLocationWithPerms() {
-      const resp = await Permissions.askAsync(Permissions.LOCATION);
-      setPermissions(resp);
+      const permissions = await Permissions.askAsync(Permissions.LOCATION);
+
+      if (permissions.status === "granted") {
+        const currentLocation = await Location.getCurrentPositionAsync({});
+        setLocation(currentLocation);
+      }
     }
     setLocationWithPerms();
   }, []);
 
-  return permissions;
+  return location;
 };

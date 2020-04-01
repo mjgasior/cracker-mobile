@@ -19,8 +19,8 @@ const LogoContainer = styled.View`
 `;
 
 export default function HomeScreen() {
-  const permissions = useLocation();
-  console.log(permissions);
+  const location = useLocation();
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -41,13 +41,20 @@ export default function HomeScreen() {
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
-          <CustomizedText>This is like śmietana:</CustomizedText>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          >
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
+          {location && (
+            <>
+              <CustomizedText>Your current location:</CustomizedText>
+              <View
+                style={[
+                  styles.codeHighlightContainer,
+                  styles.homeScreenFilename
+                ]}
+              >
+                <MonoText>Latitude: {location.coords.latitude}</MonoText>
+                <MonoText>Longitude: {location.coords.longitude}</MonoText>
+              </View>
+            </>
+          )}
         </View>
 
         <LogoContainer>
