@@ -6,6 +6,7 @@ import styled from "styled-components/native";
 
 import { MonoText } from "../components/StyledText";
 import { useLocation } from "./useLocation";
+import { useSwapi } from "./useSwapi";
 
 const CustomizedText = styled.Text`
   font-size: 16px;
@@ -20,6 +21,7 @@ const LogoContainer = styled.View`
 
 export default function HomeScreen() {
   const location = useLocation();
+  const starship = useSwapi();
 
   return (
     <View style={styles.container}>
@@ -55,6 +57,7 @@ export default function HomeScreen() {
               </View>
             </>
           )}
+          {starship && <CustomizedText>{starship.model}</CustomizedText>}
         </View>
 
         <LogoContainer>
