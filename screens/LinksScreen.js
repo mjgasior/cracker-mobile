@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Button, TextInput } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Button, ToastAndroid } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 import { sendMessage } from "./useDatabase";
+import * as firebase from "firebase";
 
 const StyledInput = styled.TextInput`
   font-size: 16px;
@@ -16,6 +17,23 @@ const StyledInput = styled.TextInput`
 export default function LinksScreen() {
   const [message, onSetMessage] = useState("Message for the user");
   const [userNumber, onSetUserNumber] = useState("133");
+
+  useEffect(() => {
+    firebase
+      .database()
+      .ref("users/133")
+      .on("value", snapshot => {
+        const result = snapshot.val();
+
+        ToastAndroid.showWithGravityAndOffset(
+          `A wild toast appeared! ${result.message}`,
+          ToastAndroid.LONG,
+          ToastAndroid.BOTTOM,
+          25,
+          50
+        );
+      });
+  }, []);
 
   return (
     <ScrollView
