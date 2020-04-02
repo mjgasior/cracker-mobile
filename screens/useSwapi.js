@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import * as firebase from "firebase";
 
 export const useSwapi = () => {
   const [starship, setStarship] = useState();
