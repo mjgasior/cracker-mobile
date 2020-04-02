@@ -8,7 +8,7 @@ export const useSwapi = () => {
       try {
         const response = await fetch("https://swapi.co/api/starships/9/");
         const responseJson = await response.json();
-        console.log(responseJson);
+
         setStarship(responseJson);
       } catch (error) {
         console.error(error);
