@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Button, ToastAndroid } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components/native";
-import { sendMessage } from "./useDatabase";
-import * as firebase from "firebase";
+import { useSendMessage, useShowToast } from "./useDatabase";
 
 const StyledInput = styled.TextInput`
   font-size: 16px;
@@ -15,25 +14,10 @@ const StyledInput = styled.TextInput`
 `;
 
 export default function LinksScreen() {
-  const [message, onSetMessage] = useState("Message for the user");
-  const [userNumber, onSetUserNumber] = useState("133");
+  const [message, setMessage] = useState("Message for the user");
+  const [userNumber, setUserNumber] = useState("133");
 
-  useEffect(() => {
-    firebase
-      .database()
-      .ref("users/133")
-      .on("value", snapshot => {
-        const result = snapshot.val();
-
-        ToastAndroid.showWithGravityAndOffset(
-          `A wild toast appeared! ${result.message}`,
-          ToastAndroid.LONG,
-          ToastAndroid.BOTTOM,
-          25,
-          50
-        );
-      });
-  }, []);
+  useShowToast();
 
   return (
     <ScrollView
@@ -42,19 +26,16 @@ export default function LinksScreen() {
     >
       <View>
         <Button
-          onPress={() => sendMessage(userNumber, message)}
+          onPress={() => useSendMessage(userNumber, message)}
           title="Click"
         />
 
         <StyledInput
-          onChangeText={text => onSetUserNumber(text)}
+          onChangeText={text => setUserNumber(text)}
           value={userNumber}
         />
 
-        <StyledInput
-          onChangeText={text => onSetMessage(text)}
-          value={message}
-        />
+        <StyledInput onChangeText={text => setMessage(text)} value={message} />
       </View>
     </ScrollView>
   );
