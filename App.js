@@ -7,6 +7,8 @@ import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import { useFirebase } from "./useFirebase";
 import { useInitialize } from "./useInitialize";
 
+import { Container, Form, Item, Label, Header, Content } from "native-base";
+
 const Stack = createStackNavigator();
 
 export default function App(props) {
@@ -18,6 +20,23 @@ export default function App(props) {
   } = useInitialize();
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
+    return null;
+  } else {
+    return (
+      <Container>
+        <Header />
+        <Content>
+          <Form>
+            <Item>
+              <Label>Email:</Label>
+            </Item>
+          </Form>
+        </Content>
+      </Container>
+    );
+  }
+
+  /*if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
   } else {
     return (
@@ -33,7 +52,7 @@ export default function App(props) {
         </NavigationContainer>
       </View>
     );
-  }
+  }*/
 }
 
 const styles = StyleSheet.create({
