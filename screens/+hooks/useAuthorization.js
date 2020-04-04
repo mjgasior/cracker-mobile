@@ -11,7 +11,7 @@ const isPasswordValid = p => {
 };
 
 export const useAuthorization = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
 
@@ -42,4 +42,21 @@ export const useAuthorization = () => {
   };
 
   return { setPassword, setEmail, login, signUp };
+};
+
+export const useLogout = () => {
+  const { setUser } = useContext(UserContext);
+
+  const logout = () => {
+    try {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => setUser());
+    } catch (error) {
+      console.log(error.toString());
+    }
+  };
+
+  return logout;
 };

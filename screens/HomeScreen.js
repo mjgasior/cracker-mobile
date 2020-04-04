@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 import styled from "styled-components/native";
@@ -7,6 +7,7 @@ import styled from "styled-components/native";
 import { MonoText } from "../components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
 import { useSwapi } from "./+hooks/useSwapi";
+import { useLogout } from "./+hooks/useAuthorization";
 
 const CustomizedText = styled.Text`
   font-size: 16px;
@@ -22,6 +23,7 @@ const LogoContainer = styled.View`
 export default function HomeScreen() {
   const location = useLocation();
   const starship = useSwapi();
+  const logout = useLogout();
 
   return (
     <View style={styles.container}>
@@ -38,6 +40,7 @@ export default function HomeScreen() {
             }
             style={styles.welcomeImage}
           />
+          <Button title="Log out" onPress={logout} />
         </View>
 
         <View style={styles.getStartedContainer}>
