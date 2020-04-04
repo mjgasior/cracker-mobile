@@ -9,7 +9,5 @@ export function getHeaderTitle(route) {
       return "Cracker";
     case "Links":
       return "Links to learn more";
-    case "Registration":
-      return "Just register";
   }
 }

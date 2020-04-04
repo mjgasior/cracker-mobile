@@ -1,15 +1,11 @@
-import React from "react";
-import { Platform, StatusBar, StyleSheet, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import BottomTabNavigator from "./navigation/BottomTabNavigator";
-import { useFirebase } from "./useFirebase";
-import { useInitialize } from "./useInitialize";
+import { useFirebase } from "./+hooks/useFirebase";
+import { useInitialize } from "./+hooks/useInitialize";
 
-import { RegistrationScreen } from "./screens/RegistrationScreen";
-
-const Stack = createStackNavigator();
+import { MainScreen } from "./screens/MainScreen";
+import { UserContext } from "./+context/UserContext";
 
 export default function App(props) {
   useFirebase();
@@ -19,34 +15,19 @@ export default function App(props) {
     initialNavigationState
   } = useInitialize();
 
+  const [user, setUser] = useState();
+
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
   } else {
-    return <RegistrationScreen />;
-  }
-
-  /*if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return null;
-  } else {
     return (
-      <View style={styles.container}>
-        {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-        <NavigationContainer
-          ref={containerRef}
-          initialState={initialNavigationState}
-        >
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </View>
+      <UserContext.Provider value={{ user, setUser }}>
+        <MainScreen
+          user={user}
+          containerRef={containerRef}
+          initialNavigationState={initialNavigationState}
+        />
+      </UserContext.Provider>
     );
-  }*/
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff"
   }
-});
+}

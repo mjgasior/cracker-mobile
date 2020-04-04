@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import * as firebase from "firebase";
+import { UserContext } from "../../+context/UserContext";
 
 const isPasswordValid = p => {
   if (p === undefined || p.length < 5) {
@@ -10,6 +11,8 @@ const isPasswordValid = p => {
 };
 
 export const useAuthorization = () => {
+  const { user, setUser } = useContext(UserContext);
+  console.log(user);
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
 
@@ -30,7 +33,7 @@ export const useAuthorization = () => {
       firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then(user => console.log(user));
+        .then(user => setUser(user));
     } catch (error) {
       console.log(error.toString());
     }

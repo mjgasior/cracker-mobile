@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import LinksScreen from "../screens/LinksScreen";
-import { RegistrationScreen } from "../screens/RegistrationScreen";
 import { getHeaderTitle, INITIAL_ROUTE_NAME } from "./utils";
 
 const BottomTab = createBottomTabNavigator();
@@ -33,16 +32,6 @@ export default function BottomTabNavigator({ navigation, route }) {
           title: "Resources",
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} name="md-book" />
-          )
-        }}
-      />
-      <BottomTab.Screen
-        name="Registration"
-        component={RegistrationScreen}
-        options={{
-          title: "Register",
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="md-medal" />
           )
         }}
       />

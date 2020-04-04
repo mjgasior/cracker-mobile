@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import ApiKeys from "./constants/ApiKeys";
+import ApiKeys from "../constants/ApiKeys";
 import * as firebase from "firebase";
 
 export const useFirebase = () => {
