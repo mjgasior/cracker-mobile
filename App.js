@@ -7,7 +7,18 @@ import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import { useFirebase } from "./useFirebase";
 import { useInitialize } from "./useInitialize";
 
-import { Container, Form, Item, Label, Header, Content } from "native-base";
+import {
+  Container,
+  Form,
+  Item,
+  Label,
+  Header,
+  Content,
+  Input,
+  Text,
+  Button
+} from "native-base";
+import { useAuthorization } from "./useAuthorization";
 
 const Stack = createStackNavigator();
 
@@ -19,17 +30,41 @@ export default function App(props) {
     initialNavigationState
   } = useInitialize();
 
+  const { setPassword, setEmail, login, signUp } = useAuthorization();
+
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
   } else {
     return (
       <Container>
-        <Header />
+        <Header>
+          <Text>Cracker app</Text>
+        </Header>
         <Content>
           <Form>
-            <Item>
+            <Item floatingLabel>
               <Label>Email:</Label>
+              <Input
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={setEmail}
+              />
             </Item>
+            <Item floatingLabel>
+              <Label>Password:</Label>
+              <Input
+                autoCapitalize="none"
+                autoCorrect={false}
+                secureTextEntry={true}
+                onChangeText={setPassword}
+              />
+            </Item>
+            <Button full rounded success onPress={login}>
+              <Text>Login</Text>
+            </Button>
+            <Button full rounded primary onPress={signUp}>
+              <Text>Sign up</Text>
+            </Button>
           </Form>
         </Content>
       </Container>
