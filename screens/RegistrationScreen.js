@@ -1,10 +1,20 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Card, CardItem, Body, Text } from "native-base";
 
 export const RegistrationScreen = () => {
   return (
-    <View>
-      <Text>asdas</Text>
-    </View>
+    <Card>
+      <CardItem header>
+        <Text>NativeBase</Text>
+      </CardItem>
+      <CardItem>
+        <Body>
+          <Text>//Your text here</Text>
+        </Body>
+      </CardItem>
+      <CardItem footer>
+        <Text>GeekyAnts</Text>
+      </CardItem>
+    </Card>
   );
 };
