@@ -12,7 +12,6 @@ const isPasswordValid = p => {
 
 export const useAuthorization = () => {
   const { user, setUser } = useContext(UserContext);
-  console.log(user);
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
 
@@ -22,7 +21,10 @@ export const useAuthorization = () => {
     }
 
     try {
-      firebase.auth().createUserWithEmailAndPassword(email, password);
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(user => setUser(user));
     } catch (error) {
       console.log(error.toString());
     }
