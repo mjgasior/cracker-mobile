@@ -4,10 +4,9 @@ import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import LinksScreen from "../screens/LinksScreen";
 import { RegistrationScreen } from "../screens/RegistrationScreen";
-import { getHeaderTitle } from "./utils";
+import { getHeaderTitle, INITIAL_ROUTE_NAME } from "./utils";
 
 const BottomTab = createBottomTabNavigator();
-const INITIAL_ROUTE_NAME = "Home";
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the

@@ -8,17 +8,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import useLinking from "./navigation/useLinking";
-import ApiKeys from "./constants/ApiKeys";
-import * as firebase from "firebase";
+import { useFirebase } from "./useFirebase";
 
 const Stack = createStackNavigator();
 
 export default function App(props) {
-  useEffect(() => {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(ApiKeys.FirebaseConfig);
-    }
-  }, []);
+  useFirebase();
 
   const [isLoadingComplete, setLoadingComplete] = useState(false);
   const [initialNavigationState, setInitialNavigationState] = useState();
@@ -36,6 +31,8 @@ export default function App(props) {
 
         // Load fonts
         await Font.loadAsync({
+          Roboto: require("native-base/Fonts/Roboto.ttf"),
+          Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
           ...Ionicons.font,
           "space-mono": require("./assets/fonts/SpaceMono-Regular.ttf")
         });
