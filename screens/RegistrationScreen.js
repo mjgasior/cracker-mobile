@@ -1,20 +1,52 @@
 import React from "react";
-import { Card, CardItem, Body, Text } from "native-base";
+import {
+  Container,
+  Form,
+  Item,
+  Label,
+  Header,
+  Content,
+  Input,
+  Text,
+  Button
+} from "native-base";
+import { useAuthorization } from "./+hooks/useAuthorization";
 
 export const RegistrationScreen = () => {
+  const { setPassword, setEmail, login, signUp } = useAuthorization();
+
   return (
-    <Card>
-      <CardItem header>
-        <Text>NativeBase</Text>
-      </CardItem>
-      <CardItem>
-        <Body>
-          <Text>//Your text here</Text>
-        </Body>
-      </CardItem>
-      <CardItem footer>
-        <Text>GeekyAnts</Text>
-      </CardItem>
-    </Card>
+    <Container>
+      <Header>
+        <Text>Cracker app</Text>
+      </Header>
+      <Content>
+        <Form>
+          <Item floatingLabel>
+            <Label>Email:</Label>
+            <Input
+              autoCapitalize="none"
+              autoCorrect={false}
+              onChangeText={setEmail}
+            />
+          </Item>
+          <Item floatingLabel>
+            <Label>Password:</Label>
+            <Input
+              autoCapitalize="none"
+              autoCorrect={false}
+              secureTextEntry={true}
+              onChangeText={setPassword}
+            />
+          </Item>
+          <Button full rounded success onPress={login}>
+            <Text>Login</Text>
+          </Button>
+          <Button full rounded primary onPress={signUp}>
+            <Text>Sign up</Text>
+          </Button>
+        </Form>
+      </Content>
+    </Container>
   );
 };

@@ -5,8 +5,8 @@ import * as WebBrowser from "expo-web-browser";
 import styled from "styled-components/native";
 
 import { MonoText } from "../components/StyledText";
-import { useLocation } from "./useLocation";
-import { useSwapi } from "./useSwapi";
+import { useLocation } from "./+hooks/useLocation";
+import { useSwapi } from "./+hooks/useSwapi";
 
 const CustomizedText = styled.Text`
   font-size: 16px;

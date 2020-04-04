@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components/native";
-import { useSendMessage, useShowToast } from "./useDatabase";
+import { useSendMessage, useShowToast } from "./+hooks/useDatabase";
 
 const StyledInput = styled.TextInput`
   font-size: 16px;
