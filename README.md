@@ -12,3 +12,18 @@ https://www.reddit.com/r/reactnative/comments/7syoxz/react_native_is_bad_rant/
 **Useful stuff**
 
 - https://www.youtube.com/channel/UCiNWv52iO_OAdZ12kslG4Cg/videos
+
+**Current Firebase realtime database rules**
+
+```
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": true,
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
+```

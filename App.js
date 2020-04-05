@@ -12,7 +12,7 @@ export default function App(props) {
   const {
     containerRef,
     isLoadingComplete,
-    initialNavigationState
+    initialNavigationState,
   } = useInitialize();
 
   const [user, setUser] = useState();
