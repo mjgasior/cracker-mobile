@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { StyleSheet, View, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 import { useSendMessage, useShowToast } from "./+hooks/useDatabase";
+import { useUserId } from "../+context/useUserId";
 
 const StyledInput = styled.TextInput`
   font-size: 16px;
@@ -14,8 +15,8 @@ const StyledInput = styled.TextInput`
 `;
 
 export default function LinksScreen() {
+  const userId = useUserId();
   const [message, setMessage] = useState("Message for the user");
-  const [userNumber, setUserNumber] = useState("133");
 
   useShowToast();
 
@@ -26,16 +27,14 @@ export default function LinksScreen() {
     >
       <View>
         <Button
-          onPress={() => useSendMessage(userNumber, message)}
-          title="Click"
+          onPress={() => useSendMessage(userId, message)}
+          title="Send to me!"
         />
 
         <StyledInput
-          onChangeText={text => setUserNumber(text)}
-          value={userNumber}
+          onChangeText={(text) => setMessage(text)}
+          value={message}
         />
-
-        <StyledInput onChangeText={text => setMessage(text)} value={message} />
       </View>
     </ScrollView>
   );
@@ -44,9 +43,9 @@ export default function LinksScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fafafa"
+    backgroundColor: "#fafafa",
   },
   contentContainer: {
-    paddingTop: 15
-  }
+    paddingTop: 15,
+  },
 });
