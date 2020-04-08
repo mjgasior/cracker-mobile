@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const useSwapi = () => {
-  const [starship, setStarship] = useState();
+  const [starship, setStarship] = useState({});
 
   useEffect(() => {
     async function fetchAStarship() {

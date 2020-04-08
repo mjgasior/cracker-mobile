@@ -3,7 +3,7 @@ import { Image, StyleSheet, View, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
-import { MonoText } from "../components/StyledText";
+import { MonoText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
 import { useSwapi } from "./+hooks/useSwapi";
 import { useLogout } from "./+hooks/useAuthorization";
@@ -21,7 +21,7 @@ const LogoContainer = styled.View`
 
 export default function HomeScreen() {
   const location = useLocation();
-  const starship = useSwapi();
+  const starship = {}; // useSwapi();
   const logout = useLogout();
 
   return (
@@ -46,7 +46,7 @@ export default function HomeScreen() {
               <View
                 style={[
                   styles.codeHighlightContainer,
-                  styles.homeScreenFilename
+                  styles.homeScreenFilename,
                 ]}
               >
                 <MonoText>Latitude: {location.coords.latitude}</MonoText>
@@ -66,34 +66,34 @@ export default function HomeScreen() {
 }
 
 HomeScreen.navigationOptions = {
-  header: null
+  header: null,
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
   contentContainer: {
-    paddingTop: 30
+    paddingTop: 30,
   },
   welcomeImage: {
     width: 100,
     height: 80,
     resizeMode: "contain",
     marginTop: 3,
-    marginLeft: -10
+    marginLeft: -10,
   },
   getStartedContainer: {
     alignItems: "center",
-    marginHorizontal: 50
+    marginHorizontal: 50,
   },
   homeScreenFilename: {
-    marginVertical: 7
+    marginVertical: 7,
   },
   codeHighlightContainer: {
     backgroundColor: "rgba(0,0,0,0.05)",
     borderRadius: 3,
-    paddingHorizontal: 4
-  }
+    paddingHorizontal: 4,
+  },
 });

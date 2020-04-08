@@ -3,7 +3,7 @@ import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 
 const PERMISSIONS = {
-  GRANTED: "granted"
+  GRANTED: "granted",
 };
 
 export const useLocation = () => {
@@ -11,11 +11,15 @@ export const useLocation = () => {
 
   useEffect(() => {
     async function setLocationWithPerms() {
-      const permissions = await Permissions.askAsync(Permissions.LOCATION);
+      try {
+        const permissions = await Permissions.askAsync(Permissions.LOCATION);
 
-      if (permissions.status === PERMISSIONS.GRANTED) {
-        const currentLocation = await Location.getCurrentPositionAsync({});
-        setLocation(currentLocation);
+        if (permissions.status === PERMISSIONS.GRANTED) {
+          const currentLocation = await Location.getCurrentPositionAsync({});
+          setLocation(currentLocation);
+        }
+      } catch (error) {
+        console.log(error);
       }
     }
 
