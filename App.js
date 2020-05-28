@@ -1,7 +1,6 @@
 import React from "react";
 import { useInitialize } from "./+hooks/useInitialize";
-
-import HomeScreen from "./screens/HomeScreen";
+import { MainScreen } from "./screens/MainScreen";
 
 export default function App(props) {
   const {
@@ -13,6 +12,11 @@ export default function App(props) {
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
   } else {
-    return <HomeScreen />;
+    return (
+      <MainScreen
+        containerRef={containerRef}
+        initialNavigationState={initialNavigationState}
+      />
+    );
   }
 }

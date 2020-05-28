@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import TabBarIcon from "../+components/TabBarIcon";
+import { TabBarIcon } from "../+components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import { getHeaderTitle, INITIAL_ROUTE_NAME } from "./utils";
 
@@ -18,19 +18,9 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Home"
         component={HomeScreen}
         options={{
-          title: "Get Started",
+          title: "Cracker!",
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} name="md-code-working" />
-          ),
-        }}
-      />
-      <BottomTab.Screen
-        name="Links"
-        component={LinksScreen}
-        options={{
-          title: "Resources",
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="md-book" />
           ),
         }}
       />

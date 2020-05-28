@@ -3,7 +3,7 @@ import { Image, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
-import { MonoText } from "../+components/StyledText";
+import { StyledText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
 
 const CustomizedText = styled.Text`
@@ -42,8 +42,8 @@ export default function HomeScreen() {
                   styles.homeScreenFilename,
                 ]}
               >
-                <MonoText>Latitude: {location.coords.latitude}</MonoText>
-                <MonoText>Longitude: {location.coords.longitude}</MonoText>
+                <StyledText>Latitude: {location.coords.latitude}</StyledText>
+                <StyledText>Longitude: {location.coords.longitude}</StyledText>
               </View>
             </>
           )}
