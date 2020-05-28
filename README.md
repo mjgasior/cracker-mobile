@@ -10,14 +10,19 @@ This is a React Native app. I got pretty frustrated during the development. If y
 
 ## Setup:
 
-Just a regular `npm i` and `npm start`. Remember to get `expo` installed before you start development.
+0. Remember to get `expo` installed before you start development. It's also good to have the `Expo` app installed on your phone.
+1. `npm i`
+2. Define the API address in the markers hook (`cracker-mobile\screens\+hooks\useMarkers.js`).
+3. Just a regular `npm start`.
 
 ## Packages:
 
-- `firebase` - you need credentials to setup the DB connection pasted in constants/ApiKeys
 - `native-base` - there were some issues with fonts so it is hardcoded into 2.13.8 version instead of 2.13.12 - [issue explained here](https://github.com/expo/vector-icons/issues/119)
 - `styled-components` - allows to write plain CSS in components without worrying about class name collisions, it helps to write CSS that's scoped to a single component and does not leak to any other element in the page
 
 ## Resources:
 
+- [Calculate distance between two latitude-longitude points? (Haversine formula)
+  ](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
+- [Latitude/Longitude Distance Calculator](https://www.nhc.noaa.gov/gccalc.shtml)
 - [Unsure Programmer YouTube channel about React Native](https://www.youtube.com/channel/UCiNWv52iO_OAdZ12kslG4Cg/videos)
