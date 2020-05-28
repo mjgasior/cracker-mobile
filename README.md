@@ -10,54 +10,7 @@ This is a React Native app. I got pretty frustrated during the development. If y
 
 ## Setup:
 
-### Firebase setup:
-
-To start this app you need Firebase configuration. Go to `Project settings`, there, at the bottom of the page, is the `Your apps` section where after selecting `Config` in `Firebase SDK snippet` you will get the `firebaseConfig` object. It looks more or less like this:
-
-```
-const firebaseConfig = {
-  apiKey: "KJG438sd-asaiaHFASu76Asa7as9ahz8aJHSfas",
-  authDomain: "cracker-app-domain.firebaseapp.com",
-  databaseURL: "https://cracker-app-domain.firebaseio.com",
-  projectId: "cracker-app-domain",
-  storageBucket: "cracker-app-domain.appspot.com",
-  messagingSenderId: "856734251014",
-  appId: "1:856734251014:web:adfg7dfgq4ag8adfh483af",
-  measurementId: "D-ABA8LL9AG7"
-};
-```
-
-You should create a file in `constants` directory called `ApiKeys.js` and paste the configuration in this way:
-
-```
-export default {
-  FirebaseConfig: {
-    apiKey: "KJG438sd-asaiaHFASu76Asa7as9ahz8aJHSfas",
-    authDomain: "cracker-app-domain.firebaseapp.com",
-    databaseURL: "https://cracker-app-domain.firebaseio.com",
-    projectId: "cracker-app-domain",
-    storageBucket: "cracker-app-domain.appspot.com",
-    messagingSenderId: "856734251014",
-    appId: "1:856734251014:web:adfg7dfgq4ag8adfh483af",
-    measurementId: "D-ABA8LL9AG7"
-  },
-};
-```
-
-Current Firebase realtime database rules:
-
-```
-{
-  "rules": {
-    "users": {
-      "$uid": {
-        ".read": true,
-        ".write": "$uid === auth.uid"
-      }
-    }
-  }
-}
-```
+Just a regular `npm i` and `npm start`. Remember to get `expo` installed before you start development.
 
 ## Packages:
 
