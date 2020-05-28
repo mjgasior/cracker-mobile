@@ -1,12 +1,10 @@
 import React from "react";
-import { Image, StyleSheet, View, Button } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
-import { MonoText } from "../+components/StyledText";
+import { StyledText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
-import { useSwapi } from "./+hooks/useSwapi";
-import { useLogout } from "./+hooks/useAuthorization";
 
 const CustomizedText = styled.Text`
   font-size: 16px;
@@ -21,9 +19,6 @@ const LogoContainer = styled.View`
 
 export default function HomeScreen() {
   const location = useLocation();
-  const starship = {}; // useSwapi();
-  const logout = useLogout();
-
   return (
     <View style={styles.container}>
       <ScrollView
@@ -38,8 +33,6 @@ export default function HomeScreen() {
             />
           </LogoContainer>
 
-          <Button title="Log out" onPress={logout} />
-
           {location && (
             <>
               <CustomizedText>Your current location:</CustomizedText>
@@ -49,12 +42,11 @@ export default function HomeScreen() {
                   styles.homeScreenFilename,
                 ]}
               >
-                <MonoText>Latitude: {location.coords.latitude}</MonoText>
-                <MonoText>Longitude: {location.coords.longitude}</MonoText>
+                <StyledText>Latitude: {location.coords.latitude}</StyledText>
+                <StyledText>Longitude: {location.coords.longitude}</StyledText>
               </View>
             </>
           )}
-          {starship && <CustomizedText>{starship.model}</CustomizedText>}
 
           <CustomizedText>
             The color of the app is the Pantone Classic Blue #0F4C81
