@@ -10,8 +10,5 @@ npm-debug.*
 web-build/
 web-report/
 
-# ignore the keys to access the Firebase
-constants/ApiKeys.js
-
 # macOS
 .DS_Store
