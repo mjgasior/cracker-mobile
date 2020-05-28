@@ -21,7 +21,7 @@ export const useShowToast = () => {
         const result = snapshot.val();
 
         ToastAndroid.showWithGravityAndOffset(
-          `A wild toast appeared! ${result.message}`,
+          `A wild toast appeared here! ${result.message}`,
           ToastAndroid.LONG,
           ToastAndroid.BOTTOM,
           25,

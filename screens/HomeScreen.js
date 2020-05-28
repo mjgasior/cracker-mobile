@@ -1,12 +1,10 @@
 import React from "react";
-import { Image, StyleSheet, View, Button } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
 import { MonoText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
-import { useSwapi } from "./+hooks/useSwapi";
-import { useLogout } from "./+hooks/useAuthorization";
 
 const CustomizedText = styled.Text`
   font-size: 16px;
@@ -21,9 +19,6 @@ const LogoContainer = styled.View`
 
 export default function HomeScreen() {
   const location = useLocation();
-  const starship = {}; // useSwapi();
-  const logout = useLogout();
-
   return (
     <View style={styles.container}>
       <ScrollView
@@ -37,8 +32,6 @@ export default function HomeScreen() {
               style={styles.welcomeImage}
             />
           </LogoContainer>
-
-          <Button title="Log out" onPress={logout} />
 
           {location && (
             <>
@@ -54,7 +47,6 @@ export default function HomeScreen() {
               </View>
             </>
           )}
-          {starship && <CustomizedText>{starship.model}</CustomizedText>}
 
           <CustomizedText>
             The color of the app is the Pantone Classic Blue #0F4C81

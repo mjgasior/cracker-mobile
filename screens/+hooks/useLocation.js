@@ -23,10 +23,7 @@ export const useLocation = () => {
       }
     }
 
-    const intervalId = setInterval(setLocationWithPerms, 3000);
-    return function cleanup() {
-      clearInterval(intervalId);
-    };
+    setLocationWithPerms();
   }, []);
 
   return location;
