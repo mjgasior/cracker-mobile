@@ -10,7 +10,7 @@ This is a React Native app. I got pretty frustrated during the development. If y
 
 ## Setup:
 
-0. Remember to get `expo` installed before you start development. It's also good to have the `Expo` app installed on your phone.
+0. If you don't have the `expo-cli` already, run `npm install expo-cli --global` (currently used version is `expo-cli@3.21.3` with `node@v12.16.1` and `npm@6.13.4`). It's also good to have the `Expo` app installed on your phone.
 1. `npm i`
 2. Define the API address in the markers hook (`cracker-mobile\screens\+hooks\useMarkers.js`).
 3. Just a regular `npm start`.
