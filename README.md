@@ -17,7 +17,6 @@ This is a React Native app. I got pretty frustrated during the development. If y
 
 ## Packages:
 
-- `native-base` - there were some issues with fonts so it is hardcoded into 2.13.8 version instead of 2.13.12 - [issue explained here](https://github.com/expo/vector-icons/issues/119)
 - `styled-components` - allows to write plain CSS in components without worrying about class name collisions, it helps to write CSS that's scoped to a single component and does not leak to any other element in the page
 
 ## Resources:
