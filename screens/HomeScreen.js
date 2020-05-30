@@ -3,14 +3,15 @@ import { Image, Platform, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { StyledText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
-// import { useMarkers } from "./+hooks/useMarkers";
+import { useMarkers } from "./+hooks/useMarkers";
 import { getDistanceFromLatLonInKm } from "./+utils/distance";
+import { Marker } from "./+components/Marker";
 
 export default function HomeScreen() {
   const location = useLocation();
-  const markers = [{ position: [50, 19] }]; // useMarkers();
+  const { data } = useMarkers();
 
-  const canShowDistance = location && markers.length > 0;
+  const canShowDistance = location && data && data.markers.length > 0;
 
   return (
     <View style={styles.container}>
@@ -25,18 +26,16 @@ export default function HomeScreen() {
           />
 
           {canShowDistance &&
-            markers.map(({ position }, i) => (
-              <StyledText key={i}>
-                This marker is{" "}
-                {getDistanceFromLatLonInKm(
-                  location.coords.latitude,
-                  location.coords.longitude,
-                  position[0],
-                  position[1]
-                ).toPrecision(3)}{" "}
-                kilometers from you.
-              </StyledText>
-            ))}
+            data.markers.map(({ position }, i) => {
+              const distance = getDistanceFromLatLonInKm(
+                location.coords.latitude,
+                location.coords.longitude,
+                position[0],
+                position[1]
+              );
+
+              return <Marker key={i} distance={distance} />;
+            })}
         </View>
       </ScrollView>
 
