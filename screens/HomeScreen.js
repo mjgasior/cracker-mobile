@@ -1,18 +1,11 @@
-import * as WebBrowser from "expo-web-browser";
 import * as React from "react";
-import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Platform, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-
-import { MonoText } from "../components/StyledText";
+import { StyledText } from "../components/StyledText";
+import { useLocation } from "./+hooks/useLocation";
 
 export default function HomeScreen() {
+  const location = useLocation();
   return (
     <View style={styles.container}>
       <ScrollView
@@ -24,18 +17,21 @@ export default function HomeScreen() {
             source={require("../assets/images/cracker-name.png")}
             style={styles.welcomeImage}
           />
-        </View>
 
-        <View style={styles.getStartedContainer}>
-          <Text style={styles.getStartedText}>
-            Open up the code for this screen:
-          </Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          >
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
+          {location && (
+            <>
+              <StyledText>Your current location:</StyledText>
+              <View
+                style={[
+                  styles.codeHighlightContainer,
+                  styles.homeScreenFilename,
+                ]}
+              >
+                <StyledText>Latitude: {location.coords.latitude}</StyledText>
+                <StyledText>Longitude: {location.coords.longitude}</StyledText>
+              </View>
+            </>
+          )}
         </View>
       </ScrollView>
 
@@ -47,9 +43,9 @@ export default function HomeScreen() {
         <View
           style={[styles.codeHighlightContainer, styles.navigationFilename]}
         >
-          <MonoText style={styles.codeHighlightText}>
+          <StyledText style={styles.codeHighlightText}>
             navigation/BottomTabNavigator.js
-          </MonoText>
+          </StyledText>
         </View>
       </View>
     </View>
