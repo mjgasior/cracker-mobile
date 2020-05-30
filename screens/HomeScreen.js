@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Image, Platform, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { StyledText } from "../components/StyledText";
+import { StyledText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
 
 export default function HomeScreen() {
@@ -20,7 +20,7 @@ export default function HomeScreen() {
 
           {location && (
             <>
-              <StyledText>Your current location:</StyledText>
+              <StyledText>Your current location now:</StyledText>
               <View
                 style={[
                   styles.codeHighlightContainer,
