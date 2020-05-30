@@ -17,29 +17,20 @@ export default function HomeScreen() {
             source={require("../assets/images/cracker-name.png")}
             style={styles.welcomeImage}
           />
-
-          {location && (
-            <>
-              <StyledText>Your current location now:</StyledText>
-              <View
-                style={[
-                  styles.codeHighlightContainer,
-                  styles.homeScreenFilename,
-                ]}
-              >
-                <StyledText>Latitude: {location.coords.latitude}</StyledText>
-                <StyledText>Longitude: {location.coords.longitude}</StyledText>
-              </View>
-            </>
-          )}
         </View>
       </ScrollView>
 
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-      </View>
+      {location && (
+        <View style={styles.tabBarInfoContainer}>
+          <StyledText>Your current location now:</StyledText>
+          <View
+            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
+          >
+            <StyledText>Latitude: {location.coords.latitude}</StyledText>
+            <StyledText>Longitude: {location.coords.longitude}</StyledText>
+          </View>
+        </View>
+      )}
     </View>
   );
 }
@@ -115,13 +106,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fbfbfb",
     paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center",
-  },
-  navigationFilename: {
-    marginTop: 5,
   },
 });
