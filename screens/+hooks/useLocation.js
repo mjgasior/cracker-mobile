@@ -23,7 +23,9 @@ export const useLocation = () => {
       }
     }
 
-    setLocationWithPerms();
+    const handler = setInterval(setLocationWithPerms, 3000);
+
+    return () => clearInterval(handler);
   }, []);
 
   return location;
