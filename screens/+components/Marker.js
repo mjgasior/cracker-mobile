@@ -4,9 +4,10 @@ import styled from "styled-components/native";
 import { StyledText } from "../../+components/StyledText";
 
 const RotatedBox = styled.View`
-  transform: rotate(90deg);
+  transform: ${(props) =>
+    props.angle === 0 ? "rotate(0deg)" : "rotate(45deg)"};
   font-variant: small-caps;
-  background: #ffd42a;
+  background: ${(props) => (props.angle === 0 ? "red" : "#ffd42a")};
   width: 17px;
   height: 17px;
   border: 0px solid #0f4c81;
@@ -14,11 +15,11 @@ const RotatedBox = styled.View`
   border-left-width: 3px;
 `;
 
-export const Marker = ({ distance }) => {
+export const Marker = ({ distance, angle }) => {
   const formattedDistance = formatDistance(distance);
   return (
     <View style={{ marginTop: 10 }}>
-      <RotatedBox />
+      <RotatedBox angle={angle} />
       <StyledText>This marker is {formattedDistance} from you.</StyledText>
     </View>
   );
@@ -29,5 +30,5 @@ const formatDistance = (distance) => {
     const meters = Math.ceil(distance * 1000);
     return `${meters} meters`;
   }
-  return `${distance} kilometers`;
+  return `${distance.toPrecision(3)} kilometers`;
 };
