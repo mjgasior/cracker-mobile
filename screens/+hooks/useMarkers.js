@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const useMarkers = () => {
-  const [markers, setMarkers] = useState([{ position: [50, 19] }]);
+  const [markers, setMarkers] = useState([]);
 
   useEffect(() => {
     async function getMarkers() {
