@@ -10,14 +10,13 @@ This is a React Native app. I got pretty frustrated during the development. If y
 
 ## Setup:
 
-0. Remember to get `expo` installed before you start development. It's also good to have the `Expo` app installed on your phone.
-1. `npm i`
+0. If you don't have the `expo-cli` already, run `npm install expo-cli --global` (currently used version is `expo-cli@3.21.3` with `node@v12.16.1` and `npm@6.13.4`). It's also good to have the `Expo` [app installed on your phone](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pl).
+1. `yarn`
 2. Define the API address in the markers hook (`cracker-mobile\screens\+hooks\useMarkers.js`).
-3. Just a regular `npm start`.
+3. To run the project run `yarn start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `yarn/npm start`).
 
 ## Packages:
 
-- `native-base` - there were some issues with fonts so it is hardcoded into 2.13.8 version instead of 2.13.12 - [issue explained here](https://github.com/expo/vector-icons/issues/119)
 - `styled-components` - allows to write plain CSS in components without worrying about class name collisions, it helps to write CSS that's scoped to a single component and does not leak to any other element in the page
 
 ## Resources:

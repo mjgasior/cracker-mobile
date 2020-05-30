@@ -1,8 +1,9 @@
-import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import * as React from "react";
+
 import { TabBarIcon } from "../+components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
-import { getHeaderTitle, INITIAL_ROUTE_NAME } from "./utils";
+import { getHeaderTitle, getInitialRoute } from "./utils";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -13,7 +14,7 @@ export default function BottomTabNavigator({ navigation, route }) {
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator initialRouteName={getInitialRoute()}>
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}

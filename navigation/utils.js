@@ -1,4 +1,6 @@
-export const INITIAL_ROUTE_NAME = "Home";
+const INITIAL_ROUTE_NAME = "Home";
+
+export const getInitialRoute = () => INITIAL_ROUTE_NAME;
 
 export const getHeaderTitle = (route) => {
   const routeName =
