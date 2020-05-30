@@ -6,7 +6,7 @@ export const useMarkers = () => {
   useEffect(() => {
     async function getMarkers() {
       try {
-        const response = await fetch("http://3.123.202.199/api", {
+        const response = await fetch("http://52.57.1.227/api", {
           method: "POST",
           headers: {
             Accept: "application/json",

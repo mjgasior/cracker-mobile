@@ -3,12 +3,12 @@ import { Image, Platform, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { StyledText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
-// import { useMarkers } from "./+hooks/useMarkers";
+import { useMarkers } from "./+hooks/useMarkers";
 import { getDistanceFromLatLonInKm } from "./+utils/distance";
 
 export default function HomeScreen() {
   const location = useLocation();
-  const markers = [{ position: [50, 19] }]; // useMarkers();
+  const markers = useMarkers();
 
   const canShowDistance = location && markers.length > 0;
 
@@ -33,7 +33,7 @@ export default function HomeScreen() {
                   location.coords.longitude,
                   position[0],
                   position[1]
-                ).toPrecision(3)}{" "}
+                ).toPrecision(4)}{" "}
                 kilometers from you.
               </StyledText>
             ))}
