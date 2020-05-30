@@ -15,7 +15,7 @@ This is a React Native app. I got pretty frustrated during the development. If y
 2. Define the API address in the markers hook (`cracker-mobile\screens\+hooks\useMarkers.js`).
 3. To run the project run `yarn start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `yarn/npm start`).
 
-## Release:
+## Release a standalone version installed directly on the device:
 
 This manual is based on the [Expo documentation](https://docs.expo.io/distribution/building-standalone-apps/).
 
@@ -23,6 +23,16 @@ This manual is based on the [Expo documentation](https://docs.expo.io/distributi
 1. Run `expo build:android`. Any additional instructions will be present in the console.
 2. The build, depending on the queue, takes around 15 minutes and is not done locally. After that time you will get a URL where you can find necessary files. If you have picked the `apk` option to test the app release on the phone, use the provided link from the build to download the `.apk` file.
 3. Download the [SDK Platform Tools](https://developer.android.com/studio/releases/platform-tools) from Android Developers website. It includes the `adb` tool, that is Android Debug Bridge. [Extract the contents](https://www.xda-developers.com/install-adb-windows-macos-linux/) of this ZIP file into an easily accessible folder (such as `C:\adb`).
+4. Turn on the USB debug mode on you phone. Usually you can start with tapping multiple times on the version in settings section, what unlocks the `{} Developer options` section. There you can find an switch which will allow USB debugging.
+5. Open Powershell, Git Shell or any of those in the directory where the `adb.exe` is and run `./adb.exe devices`. Your device should be listed.
+6. Copy the `.apk` file to the directory where ythe `adb.exe` file is and run `./adb.exe install your-app-filename.apk`.
+7. After the `adb` console returns a message as below, the app should be available on your phone:
+
+```
+PS C:\android\platform-tools> .\adb.exe install cracker.apk
+Performing Streamed Install
+Success
+```
 
 ## Packages:
 
