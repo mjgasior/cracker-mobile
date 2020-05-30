@@ -3,10 +3,6 @@ export function getAngle(lat1, lon1, lat2, lon2) {
   const deltaY = lon1 - lon2;
   const radians = Math.atan(deltaX / deltaY);
   const degrees = (radians * 180) / Math.PI;
-
-  if (degrees < 0) {
-    return 0;
-  }
   return degrees;
 }
 

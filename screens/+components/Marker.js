@@ -4,10 +4,9 @@ import styled from "styled-components/native";
 import { StyledText } from "../../+components/StyledText";
 
 const RotatedBox = styled.View`
-  transform: ${(props) =>
-    props.angle === 0 ? "rotate(0deg)" : "rotate(45deg)"};
+  transform: ${(props) => `rotate(${props.angle}deg)`};
   font-variant: small-caps;
-  background: ${(props) => (props.angle === 0 ? "red" : "#ffd42a")};
+  background: #ffd42a;
   width: 17px;
   height: 17px;
   border: 0px solid #0f4c81;
