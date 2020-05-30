@@ -1,11 +1,17 @@
 import * as React from "react";
-import { Image, Platform, StyleSheet, Text, View } from "react-native";
+import { Image, Platform, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { StyledText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
+import { useMarkers } from "./+hooks/useMarkers";
+import { getDistanceFromLatLonInKm } from "./+utils/distance";
 
 export default function HomeScreen() {
   const location = useLocation();
+  const markers = useMarkers();
+
+  const canShowDistance = location && markers.length > 0;
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -17,6 +23,20 @@ export default function HomeScreen() {
             source={require("../assets/images/cracker-name.png")}
             style={styles.welcomeImage}
           />
+
+          {canShowDistance &&
+            markers.map(({ position }, i) => (
+              <StyledText key={i}>
+                This marker is{" "}
+                {getDistanceFromLatLonInKm(
+                  location.coords.latitude,
+                  location.coords.longitude,
+                  position[0],
+                  position[1]
+                ).toPrecision(3)}{" "}
+                kilometers from you.
+              </StyledText>
+            ))}
         </View>
       </ScrollView>
 
@@ -44,13 +64,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: "rgba(0,0,0,0.4)",
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: "center",
-  },
   contentContainer: {
     paddingTop: 30,
   },
@@ -60,32 +73,19 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   welcomeImage: {
-    width: 100,
+    width: 200,
     height: 80,
     resizeMode: "contain",
     marginTop: 3,
     marginLeft: -10,
   },
-  getStartedContainer: {
-    alignItems: "center",
-    marginHorizontal: 50,
-  },
   homeScreenFilename: {
     marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: "rgba(96,100,109, 0.8)",
   },
   codeHighlightContainer: {
     backgroundColor: "rgba(0,0,0,0.05)",
     borderRadius: 3,
     paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    lineHeight: 24,
-    textAlign: "center",
   },
   tabBarInfoContainer: {
     position: "absolute",
