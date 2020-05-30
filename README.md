@@ -36,6 +36,9 @@ Success
 
 ## Packages:
 
+- `@apollo/react-hooks` - integration with Apollo based on React hooks
+- `apollo-boost` - package containing everything you need to set up Apollo Client (bare `@apollo/client` was lacking a comfortable way of [adding authorization header](https://www.apollographql.com/docs/react/networking/authentication/#header "Apollo GQL docs") to all GQL requests)
+- `graphql` - the JavaScript reference implementation for GraphQL, a query language for APIs created by Facebook
 - `styled-components` - allows to write plain CSS in components without worrying about class name collisions, it helps to write CSS that's scoped to a single component and does not leak to any other element in the page
 
 ## Resources:

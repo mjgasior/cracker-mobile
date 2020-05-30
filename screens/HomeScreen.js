@@ -8,9 +8,9 @@ import { getDistanceFromLatLonInKm } from "./+utils/distance";
 
 export default function HomeScreen() {
   const location = useLocation();
-  const markers = useMarkers();
+  const { data } = useMarkers();
 
-  const canShowDistance = location && markers.length > 0;
+  const canShowDistance = location && data && data.markers.length > 0;
 
   return (
     <View style={styles.container}>
@@ -25,7 +25,7 @@ export default function HomeScreen() {
           />
 
           {canShowDistance &&
-            markers.map(({ position }, i) => (
+            data.markers.map(({ position }, i) => (
               <StyledText key={i}>
                 This marker is{" "}
                 {getDistanceFromLatLonInKm(
