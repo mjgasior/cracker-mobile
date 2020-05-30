@@ -5,6 +5,7 @@ import { StyledText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
 import { useMarkers } from "./+hooks/useMarkers";
 import { getDistanceFromLatLonInKm } from "./+utils/distance";
+import { Marker } from "./+components/Marker";
 
 export default function HomeScreen() {
   const location = useLocation();
@@ -25,18 +26,16 @@ export default function HomeScreen() {
           />
 
           {canShowDistance &&
-            data.markers.map(({ position }, i) => (
-              <StyledText key={i}>
-                This marker is{" "}
-                {getDistanceFromLatLonInKm(
-                  location.coords.latitude,
-                  location.coords.longitude,
-                  position[0],
-                  position[1]
-                ).toPrecision(4)}{" "}
-                kilometers from you.
-              </StyledText>
-            ))}
+            data.markers.map(({ position }, i) => {
+              const distance = getDistanceFromLatLonInKm(
+                location.coords.latitude,
+                location.coords.longitude,
+                position[0],
+                position[1]
+              );
+
+              return <Marker key={i} distance={distance} />;
+            })}
         </View>
       </ScrollView>
 
