@@ -39,14 +39,6 @@ export default function HomeScreen() {
         <Text style={styles.tabBarInfoText}>
           This is a tab bar. You can edit it in:
         </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}
-        >
-          <StyledText style={styles.codeHighlightText}>
-            navigation/BottomTabNavigator.js
-          </StyledText>
-        </View>
       </View>
     </View>
   );
