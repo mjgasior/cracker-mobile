@@ -7,7 +7,7 @@ import { getHeaderTitle, getInitialRoute } from "./utils";
 
 const BottomTab = createBottomTabNavigator();
 
-export default function BottomTabNavigator({ navigation, route }) {
+export const BottomTabNavigator = ({ navigation, route }) => {
   // Set the header title on the parent stack navigator depending on the
   // currently active tab. Learn more in the documentation:
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
@@ -27,4 +27,4 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
     </BottomTab.Navigator>
   );
-}
+};
