@@ -41,6 +41,17 @@ export const Compass = () => {
 
   const { x, y, z } = data;
 
+  let direction = "";
+  if (x < 0 && y < 0) {
+    direction = "South";
+  } else if (x > 0 && y > 0) {
+    direction = "North";
+  } else if (x > 0 && y < 0) {
+    direction = "West";
+  } else {
+    direction = "East";
+  }
+
   return (
     <View style={styles.sensor}>
       <Text>Magnetometer:</Text>
@@ -50,7 +61,7 @@ export const Compass = () => {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={_toggle} style={styles.button}>
-          <Text>Toggle</Text>
+          <Text>Toggle {direction}</Text>
         </TouchableOpacity>
       </View>
     </View>
