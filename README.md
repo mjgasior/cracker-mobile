@@ -12,7 +12,7 @@ This is a React Native app. I got pretty frustrated during the development. If y
 
 0. If you don't have the `expo-cli` already, run `npm install expo-cli --global` (currently used version is `expo-cli@3.21.3` with `node@v12.16.1` and `npm@6.13.4`). It's also good to have the `Expo` [app installed on your phone](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pl).
 1. `yarn`
-2. Define the API address in the markers hook (`cracker-mobile\screens\+hooks\useMarkers.js`).
+2. Define the API address in the `app.json` file in `apiAddress` property.
 3. To run the project run `yarn start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `yarn/npm start`).
 
 ## Release a standalone version installed directly on the device:

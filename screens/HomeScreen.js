@@ -7,6 +7,7 @@ import { useMarkers } from "./+hooks/useMarkers";
 import { getDistanceFromLatLonInKm, getAngle } from "./+utils/distance";
 import { Marker } from "./+components/Marker";
 
+// https://docs.expo.io/versions/latest/sdk/magnetometer/
 export default function HomeScreen() {
   const location = useLocation();
   const { data } = useMarkers();

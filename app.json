@@ -25,6 +25,9 @@
     "android": {
       "package": "com.mjgasior.cracker",
       "versionCode": 1
+    },
+    "extra": {
+      "apiAddress": "18.157.192.120"
     }
   }
 }
