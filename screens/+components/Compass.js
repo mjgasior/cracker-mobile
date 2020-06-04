@@ -1,5 +1,6 @@
 import { Magnetometer } from "expo-sensors";
 import React from "react";
+import LPF from "lpf";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export const Compass = () => {
@@ -12,6 +13,8 @@ export const Compass = () => {
 
   React.useEffect(() => {
     _toggle();
+    LPF.init([]);
+    LPF.smoothing = 0.2;
     Magnetometer.setUpdateInterval(1000);
     return () => {
       _unsubscribe();
@@ -49,7 +52,7 @@ export const Compass = () => {
         angle = (Math.atan2(y, x) + 2 * Math.PI) * (180 / Math.PI);
       }
     }
-    return Math.round(angle);
+    return Math.round(LPF.next(angle));
   };
 
   const _direction = (degree) => {
