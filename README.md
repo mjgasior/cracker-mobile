@@ -48,6 +48,6 @@ Success
 ## Resources:
 
 - [Calculate distance between two latitude-longitude points? (Haversine formula)](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
+- [Compass made with magnetometer](https://github.com/rahulhaque/compass-react-native/blob/master/App.js)
 - [Latitude/Longitude Distance Calculator](https://www.nhc.noaa.gov/gccalc.shtml)
-- [Magnetometer docs](https://docs.expo.io/versions/latest/sdk/magnetometer/)
 - [Unsure Programmer YouTube channel about React Native](https://www.youtube.com/channel/UCiNWv52iO_OAdZ12kslG4Cg/videos)

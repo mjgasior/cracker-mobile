@@ -39,18 +39,44 @@ export const Compass = () => {
     setSubscription(null);
   };
 
-  const { x, y, z } = data;
+  const _angle = (magnetometer) => {
+    let angle = 0;
+    if (magnetometer) {
+      let { x, y } = magnetometer;
+      if (Math.atan2(y, x) >= 0) {
+        angle = Math.atan2(y, x) * (180 / Math.PI);
+      } else {
+        angle = (Math.atan2(y, x) + 2 * Math.PI) * (180 / Math.PI);
+      }
+    }
+    return Math.round(angle);
+  };
 
-  let direction = "";
-  if (x < 0 && y < 0) {
-    direction = "South";
-  } else if (x > 0 && y > 0) {
-    direction = "North";
-  } else if (x > 0 && y < 0) {
-    direction = "West";
-  } else {
-    direction = "East";
-  }
+  const _direction = (degree) => {
+    if (degree >= 22.5 && degree < 67.5) {
+      return "NE";
+    } else if (degree >= 67.5 && degree < 112.5) {
+      return "East (Wschód)";
+    } else if (degree >= 112.5 && degree < 157.5) {
+      return "SE";
+    } else if (degree >= 157.5 && degree < 202.5) {
+      return "South (Południe)";
+    } else if (degree >= 202.5 && degree < 247.5) {
+      return "SW";
+    } else if (degree >= 247.5 && degree < 292.5) {
+      return "West (Zachód)";
+    } else if (degree >= 292.5 && degree < 337.5) {
+      return "NW";
+    } else {
+      return "North (Północ)";
+    }
+  };
+
+  const _degree = (magnetometer) => {
+    return magnetometer - 90 >= 0 ? magnetometer - 90 : magnetometer + 271;
+  };
+
+  const { x, y, z } = data;
 
   return (
     <View style={styles.sensor}>
@@ -61,7 +87,7 @@ export const Compass = () => {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={_toggle} style={styles.button}>
-          <Text>Toggle {direction}</Text>
+          <Text>Toggle {_direction(_degree(_angle(data)))}</Text>
         </TouchableOpacity>
       </View>
     </View>
