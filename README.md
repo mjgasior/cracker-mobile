@@ -41,9 +41,13 @@ Success
 - `graphql` - the JavaScript reference implementation for GraphQL, a query language for APIs created by Facebook
 - `styled-components` - allows to write plain CSS in components without worrying about class name collisions, it helps to write CSS that's scoped to a single component and does not leak to any other element in the page
 
+### Expo SDK:
+
+- `expo-sensors` - provides various APIs for accessing device sensors to measure motion, orientation, pressure, magnetic fields, and step count (`cracker-mobile` uses magnetometer)
+
 ## Resources:
 
-- [Calculate distance between two latitude-longitude points? (Haversine formula)
-  ](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
+- [Calculate distance between two latitude-longitude points? (Haversine formula)](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
 - [Latitude/Longitude Distance Calculator](https://www.nhc.noaa.gov/gccalc.shtml)
+- [Magnetometer docs](https://docs.expo.io/versions/latest/sdk/magnetometer/)
 - [Unsure Programmer YouTube channel about React Native](https://www.youtube.com/channel/UCiNWv52iO_OAdZ12kslG4Cg/videos)

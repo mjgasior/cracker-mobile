@@ -1,9 +1,9 @@
 import * as React from "react";
-import { View } from "react-native";
+import { View, Animated } from "react-native";
 import styled from "styled-components/native";
 import { StyledText } from "../../+components/StyledText";
 
-const RotatedBox = styled.View`
+const RotatedBox = Animated.createAnimatedComponent(styled.View`
   transform: ${(props) => `rotate(${props.angle}deg)`};
   font-variant: small-caps;
   background: #ffd42a;
@@ -12,7 +12,7 @@ const RotatedBox = styled.View`
   border: 0px solid #0f4c81;
   border-top-width: 3px;
   border-left-width: 3px;
-`;
+`);
 
 export const Marker = ({ distance, angle }) => {
   const formattedDistance = formatDistance(distance);

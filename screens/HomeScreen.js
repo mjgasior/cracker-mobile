@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Image, Platform, StyleSheet, View } from "react-native";
+import { Magnetometer } from "expo-sensors";
 import { ScrollView } from "react-native-gesture-handler";
 import { StyledText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
 import { useMarkers } from "./+hooks/useMarkers";
 import { getDistanceFromLatLonInKm, getAngle } from "./+utils/distance";
 import { Marker } from "./+components/Marker";
+import { Compass } from "./+components/Compass";
 
-// https://docs.expo.io/versions/latest/sdk/magnetometer/
 export default function HomeScreen() {
   const location = useLocation();
   const { data } = useMarkers();
@@ -44,6 +45,7 @@ export default function HomeScreen() {
 
               return <Marker key={i} distance={distance} angle={angle} />;
             })}
+          <Compass />
         </View>
       </ScrollView>
 
