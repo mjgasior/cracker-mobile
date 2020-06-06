@@ -35,13 +35,12 @@ export const MarkersScreen = () => {
             );
 
             return (
-              <>
-                <Marker key={i} distance={distance} angle={angle} />
-                <Text>
-                  Lat: {position[0].toPrecision(6)} Lon:{" "}
-                  {position[1].toPrecision(6)}
-                </Text>
-              </>
+              <Marker
+                key={i}
+                distance={distance}
+                angle={angle}
+                heading={(location.coords.heading * Math.PI) / 180}
+              />
             );
           })}
       </View>

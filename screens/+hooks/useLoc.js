@@ -20,7 +20,8 @@ export const useLoc = () => {
             {
               accuracy: Location.Accuracy.Highest,
               enableHighAccuracy: true,
-              distanceInterval: 10,
+              distanceInterval: 1,
+              timeInterval: 1000,
             },
             (locationData) => setLocation(locationData)
           );

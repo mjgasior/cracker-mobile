@@ -3,8 +3,12 @@ import { View } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import { Arrow } from "./Arrow";
 
-export const Marker = ({ distance, angle }) => {
+export const Marker = ({ distance, angle, heading }) => {
   const formattedDistance = formatDistance(distance);
+  console.log("WHERE TO HEAD?");
+  console.log((angle * 180) / Math.PI);
+  console.log((heading * 180) / Math.PI);
+  const absAngle = Math.abs(angle - heading);
   return (
     <View
       style={{
@@ -18,6 +22,7 @@ export const Marker = ({ distance, angle }) => {
       <StyledText>
         This marker is {formattedDistance} away ({formatRadians(angle)}°).
       </StyledText>
+      <Arrow degree={absAngle} />
     </View>
   );
 };
