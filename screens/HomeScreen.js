@@ -8,6 +8,7 @@ import { useMarkers } from "./+hooks/useMarkers";
 import { getDistanceFromLatLonInKm, getAngle } from "./+utils/distance";
 import { Marker } from "./+components/Marker";
 import { Compass } from "./+components/Compass";
+import { Arrow } from "./+components/Arrow";
 
 export default function HomeScreen() {
   const location = useLocation();
@@ -46,6 +47,7 @@ export default function HomeScreen() {
               return <Marker key={i} distance={distance} angle={angle} />;
             })}
           <Compass />
+          <Arrow />
         </View>
       </ScrollView>
 
