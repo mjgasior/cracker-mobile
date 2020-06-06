@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components/native";
 
 const StyledImage = styled.Image`
-  width: 200;
-  height: 80;
+  width: 200px;
+  height: 80px;
   resize-mode: contain;
 `;
 
