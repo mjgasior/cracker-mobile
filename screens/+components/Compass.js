@@ -2,6 +2,7 @@ import { Magnetometer } from "expo-sensors";
 import React from "react";
 import LPF from "lpf";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Arrow } from "./Arrow";
 
 export const Compass = () => {
   const [data, setData] = React.useState({
@@ -92,6 +93,7 @@ export const Compass = () => {
         <TouchableOpacity onPress={_toggle} style={styles.button}>
           <Text>Toggle {_direction(_degree(_angle(data)))}</Text>
         </TouchableOpacity>
+        <Arrow degree={_degree(_angle(data))} />
       </View>
     </View>
   );

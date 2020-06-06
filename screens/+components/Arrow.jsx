@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Animated } from "react-native";
 
-export const Arrow = () => {
+export const Arrow = ({ degree }) => {
   const [fadeAnim] = useState(new Animated.Value(0));
   const [rotateAnim] = useState(new Animated.Value(0));
 
@@ -22,7 +22,7 @@ export const Arrow = () => {
         opacity: fadeAnim, // Bind opacity to animated value
         transform: [
           { scale: 1 },
-          { rotateZ: rotateAnim },
+          { rotateZ: degree },
           { perspective: 1000 }, // without this line this Animation will not render on Android while working fine on iOS
         ],
       }}
