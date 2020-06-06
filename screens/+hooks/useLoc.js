@@ -17,7 +17,12 @@ export const useLoc = () => {
 
         if (permissions.status === PERMISSIONS.GRANTED) {
           const subscriptionObject = await Location.watchPositionAsync(
-            { enableHighAccuracy: true },
+            {
+              accuracy: Location.Accuracy.Highest,
+              enableHighAccuracy: true,
+              distanceInterval: 0,
+              timeInterval: 1000,
+            },
             (locationData) => setLocation(locationData)
           );
           setSubscription(subscriptionObject);

@@ -46,17 +46,15 @@ export default function HomeScreen() {
         </View>
       </ScrollView>
 
-      {
-        <View style={styles.tabBarInfoContainer}>
-          <StyledText>Your current location now:</StyledText>
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          >
-            <StyledText>Latitude: {location.current.latitude}</StyledText>
-            <StyledText>Longitude: {location.current.longitude}</StyledText>
-          </View>
+      <View style={styles.tabBarInfoContainer}>
+        <StyledText>Your current location now:</StyledText>
+        <View
+          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
+        >
+          <StyledText>Latitude: {location.current.latitude}</StyledText>
+          <StyledText>Longitude: {location.current.longitude}</StyledText>
         </View>
-      }
+      </View>
     </View>
   );
 }
