@@ -46,4 +46,5 @@ Success
 - [Calculate distance between two latitude-longitude points? (Haversine formula)](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
 - [Compass made with magnetometer](https://github.com/rahulhaque/compass-react-native/blob/master/App.js)
 - [Latitude/Longitude Distance Calculator](https://www.nhc.noaa.gov/gccalc.shtml)
+- [Removing noise from location data](https://blog.expo.io/a-complete-guide-to-displaying-and-normalizing-location-data-in-react-native-7e448c760fc2)
 - [Unsure Programmer YouTube channel about React Native](https://www.youtube.com/channel/UCiNWv52iO_OAdZ12kslG4Cg/videos)
