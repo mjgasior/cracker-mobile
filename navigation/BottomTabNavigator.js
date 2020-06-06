@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as React from "react";
 
 import { TabBarIcon } from "../+components/TabBarIcon";
-import HomeScreen from "../screens/HomeScreen";
 import { MarkersScreen } from "../screens/MarkersScreen";
 import { getHeaderTitle, getInitialRoute } from "./utils";
 
@@ -16,16 +15,6 @@ export const BottomTabNavigator = ({ navigation, route }) => {
 
   return (
     <BottomTab.Navigator initialRouteName={getInitialRoute()}>
-      <BottomTab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          title: "Cracker!",
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="md-code-working" />
-          ),
-        }}
-      />
       <BottomTab.Screen
         name="Markers"
         component={MarkersScreen}

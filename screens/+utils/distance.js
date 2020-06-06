@@ -13,15 +13,6 @@ export function getAngle(lat1, lon1, lat2, lon2) {
   return radians;
 }
 
-export function getAngle2(latA, lonA, latB, lonB, lat0, lon0) {
-  const x1 = latA - lat0;
-  const y1 = lonA - lon0;
-  const x2 = latB - lat0;
-  const y2 = lonB - lon0;
-
-  return getAngle(x1, y1, x2, y2);
-}
-
 export function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the earth in km
   const dLat = deg2rad(lat2 - lat1); // deg2rad below

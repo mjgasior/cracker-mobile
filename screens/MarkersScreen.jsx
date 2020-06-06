@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { Container } from "./+components/Container";
 import { Logo } from "./+components/Logo";
 import { useMarkers } from "./+hooks/useMarkers";
 import { getDistanceFromLatLonInKm, getAngle } from "./+utils/distance";
-import { useLoc } from "./+hooks/useLoc";
+import { useLocation } from "./+hooks/useLocation";
 import { Marker } from "./+components/Marker";
 import { NavigationBar } from "./+components/NavigationBar";
 
 export const MarkersScreen = () => {
   const { data } = useMarkers();
-  const location = useLoc();
+  const location = useLocation();
 
   const canShowMarkers = location && data && data.markers.length > 0;
   return (
