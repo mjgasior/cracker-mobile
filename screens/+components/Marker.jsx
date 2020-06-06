@@ -16,7 +16,7 @@ export const Marker = ({ distance, angle }) => {
     >
       <Arrow degree={angle} />
       <StyledText>
-        This marker is {formattedDistance} from you {formatRadians(angle)}.
+        This marker is {formattedDistance} away ({formatRadians(angle)}°).
       </StyledText>
     </View>
   );
@@ -25,9 +25,9 @@ export const Marker = ({ distance, angle }) => {
 const formatDistance = (distance) => {
   if (distance < 1) {
     const meters = Math.ceil(distance * 1000);
-    return `${meters} meters`;
+    return `${meters} m`;
   }
-  return `${distance.toPrecision(3)} kilometers`;
+  return `${distance.toPrecision(3)} km`;
 };
 
 const formatRadians = (radians) => {
