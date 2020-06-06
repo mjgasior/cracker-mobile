@@ -1,3 +1,11 @@
+export function getAngle(lat1, lon1, lat2, lon2) {
+  const deltaX = lat1 - lat2;
+  const deltaY = lon1 - lon2;
+  const radians = Math.atan(deltaX / deltaY);
+  const degrees = (radians * 180) / Math.PI;
+  return degrees;
+}
+
 export function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the earth in km
   const dLat = deg2rad(lat2 - lat1); // deg2rad below

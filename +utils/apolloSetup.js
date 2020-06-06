@@ -1,8 +1,9 @@
+import Constants from "expo-constants";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 
 const client = new ApolloClient({
-  uri: "http://52.57.1.227/api",
+  uri: `http://${Constants.manifest.extra.apiAddress}/api`,
   request: (operation) => {
     operation.setContext((context) => ({
       headers: {
