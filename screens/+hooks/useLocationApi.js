@@ -23,7 +23,7 @@ export const useLocationApi = () => {
       }
     }
 
-    const handler = setInterval(setLocationWithPerms, 3000);
+    const handler = setInterval(setLocationWithPerms, 1000);
 
     return () => clearInterval(handler);
   }, []);
