@@ -9,5 +9,7 @@ export const getHeaderTitle = (route) => {
   switch (routeName) {
     case "Home":
       return "Cracker";
+    case "Markers":
+      return "Cracker markers";
   }
 };

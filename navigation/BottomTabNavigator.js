@@ -3,6 +3,7 @@ import * as React from "react";
 
 import { TabBarIcon } from "../+components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
+import { MarkersScreen } from "../screens/MarkersScreen";
 import { getHeaderTitle, getInitialRoute } from "./utils";
 
 const BottomTab = createBottomTabNavigator();
@@ -22,6 +23,16 @@ export const BottomTabNavigator = ({ navigation, route }) => {
           title: "Cracker!",
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} name="md-code-working" />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Markers"
+        component={MarkersScreen}
+        options={{
+          title: "Cracker markers!",
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} name="md-compass" />
           ),
         }}
       />
