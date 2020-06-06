@@ -8,6 +8,7 @@ const PERMISSIONS = {
 
 export const useLocation = () => {
   const [location, setLocation] = useState();
+  const [subscription, setSubscription] = useState();
 
   useEffect(() => {
     async function setLocationWithPerms() {
@@ -15,17 +16,29 @@ export const useLocation = () => {
         const permissions = await Permissions.askAsync(Permissions.LOCATION);
 
         if (permissions.status === PERMISSIONS.GRANTED) {
-          const currentLocation = await Location.getCurrentPositionAsync({});
-          setLocation(currentLocation);
+          const subscriptionObject = await Location.watchPositionAsync(
+            {
+              accuracy: Location.Accuracy.Highest,
+              enableHighAccuracy: true,
+              distanceInterval: 1,
+              timeInterval: 1000,
+            },
+            (locationData) => setLocation(locationData)
+          );
+          setSubscription(subscriptionObject);
         }
       } catch (error) {
         console.log(error);
       }
     }
 
-    const handler = setInterval(setLocationWithPerms, 3000);
+    setLocationWithPerms();
 
-    return () => clearInterval(handler);
+    return () => {
+      if (subscription) {
+        subscription.remove();
+      }
+    };
   }, []);
 
   return location;

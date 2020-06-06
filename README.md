@@ -39,19 +39,11 @@ Success
 - `@apollo/react-hooks` - integration with Apollo based on React hooks
 - `apollo-boost` - package containing everything you need to set up Apollo Client (bare `@apollo/client` was lacking a comfortable way of [adding authorization header](https://www.apollographql.com/docs/react/networking/authentication/#header "Apollo GQL docs") to all GQL requests)
 - `graphql` - the JavaScript reference implementation for GraphQL, a query language for APIs created by Facebook
-- `lpf` - low-pass filter for javascript, used to decrease noise in magnetometer data
 - `styled-components` - allows to write plain CSS in components without worrying about class name collisions, it helps to write CSS that's scoped to a single component and does not leak to any other element in the page
-
-### Expo SDK:
-
-- `expo-sensors` - provides various APIs for accessing device sensors to measure motion, orientation, pressure, magnetic fields, and step count (`cracker-mobile` uses magnetometer)
 
 ## Resources:
 
 - [Calculate distance between two latitude-longitude points? (Haversine formula)](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
-- [Compass made with magnetometer](https://github.com/rahulhaque/compass-react-native/blob/master/App.js)
-- [Device orientation](https://docs.expo.io/versions/latest/sdk/devicemotion/)
 - [Heading API in Expo](https://docs.expo.io/versions/latest/sdk/location/#locationgetheadingasync)
 - [Latitude/Longitude Distance Calculator](https://www.nhc.noaa.gov/gccalc.shtml)
-- [North with magnetometer](https://www.w3.org/TR/magnetometer/)
 - [Unsure Programmer YouTube channel about React Native](https://www.youtube.com/channel/UCiNWv52iO_OAdZ12kslG4Cg/videos)

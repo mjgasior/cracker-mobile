@@ -1,9 +1,16 @@
 export function getAngle(lat1, lon1, lat2, lon2) {
   const deltaX = lat1 - lat2;
   const deltaY = lon1 - lon2;
+
+  if (deltaY === 0) {
+    return 0;
+  }
+
   const radians = Math.atan(deltaX / deltaY);
-  const degrees = (radians * 180) / Math.PI;
-  return degrees;
+  if (deltaY < 0) {
+    return radians + Math.PI;
+  }
+  return radians;
 }
 
 export function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
