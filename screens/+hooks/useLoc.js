@@ -17,11 +17,8 @@ export const useLoc = () => {
 
         if (permissions.status === PERMISSIONS.GRANTED) {
           const subscriptionObject = await Location.watchPositionAsync(
-            { timeInterval: 1000 },
-            (locationData) => {
-              console.log(locationData);
-              setLocation(locationData);
-            }
+            { enableHighAccuracy: true },
+            (locationData) => setLocation(locationData)
           );
           setSubscription(subscriptionObject);
         }
@@ -34,7 +31,6 @@ export const useLoc = () => {
 
     return () => {
       if (subscription) {
-        console.log("DELETE");
         subscription.remove();
       }
     };
