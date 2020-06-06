@@ -13,22 +13,14 @@ export const Compass = () => {
   const [subscription, setSubscription] = React.useState(null);
 
   React.useEffect(() => {
-    _toggle();
+    _subscribe();
     LPF.init([]);
     LPF.smoothing = 0.2;
-    Magnetometer.setUpdateInterval(1000);
+    Magnetometer.setUpdateInterval(100);
     return () => {
       _unsubscribe();
     };
   }, []);
-
-  const _toggle = () => {
-    if (subscription) {
-      _unsubscribe();
-    } else {
-      _subscribe();
-    }
-  };
 
   const _subscribe = () => {
     setSubscription(
@@ -56,55 +48,18 @@ export const Compass = () => {
     return Math.round(LPF.next(angle));
   };
 
-  const _direction = (degree) => {
-    if (degree >= 22.5 && degree < 67.5) {
-      return "NE";
-    } else if (degree >= 67.5 && degree < 112.5) {
-      return "East (Wschód)";
-    } else if (degree >= 112.5 && degree < 157.5) {
-      return "SE";
-    } else if (degree >= 157.5 && degree < 202.5) {
-      return "South (Południe)";
-    } else if (degree >= 202.5 && degree < 247.5) {
-      return "SW";
-    } else if (degree >= 247.5 && degree < 292.5) {
-      return "West (Zachód)";
-    } else if (degree >= 292.5 && degree < 337.5) {
-      return "NW";
-    } else {
-      return "North (Północ)";
-    }
-  };
-
   const _degree = (magnetometer) => {
     return magnetometer - 90 >= 0 ? magnetometer - 90 : magnetometer + 271;
   };
 
-  const { x, y, z } = data;
-
   return (
     <View style={styles.sensor}>
-      <Text>Magnetometer:</Text>
-      <Text>
-        x: {round(x)} y: {round(y)} z: {round(z)}
-      </Text>
-
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={_toggle} style={styles.button}>
-          <Text>Toggle {_direction(_degree(_angle(data)))}</Text>
-        </TouchableOpacity>
-        <Arrow degree={_degree(_angle(data))} />
+        <Arrow degree={_degree(_angle(data)) * (Math.PI / 180)} />
       </View>
     </View>
   );
 };
-
-function round(n) {
-  if (!n) {
-    return 0;
-  }
-  return Math.floor(n * 100) / 100;
-}
 
 const styles = StyleSheet.create({
   container: {

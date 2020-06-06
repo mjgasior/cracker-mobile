@@ -22,7 +22,7 @@ export const Arrow = ({ degree }) => {
       }}
     >
       <View>
-        <Text>Arrow</Text>
+        <Text>↑</Text>
       </View>
     </Animated.View>
   );
