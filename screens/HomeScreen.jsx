@@ -13,23 +13,6 @@ export default function HomeScreen() {
   const { data } = useMarkers();
 
   const [degree, setDegree] = useState(0);
-  const [locations, setLocations] = useState({
-    current: { latitude: 0, longitude: 0 },
-    previous: { latitude: 0, longitude: 0 },
-  });
-
-  useEffect(() => {
-    if (location) {
-      setLocations((prev) => {
-        return {
-          current: {
-            ...location.coords,
-          },
-          previous: prev.current,
-        };
-      });
-    }
-  }, [location]);
 
   const canShowDistance = location && data && data.markers.length > 0;
 
@@ -48,15 +31,15 @@ export default function HomeScreen() {
           {canShowDistance &&
             data.markers.map(({ position }, i) => {
               const distance = getDistanceFromLatLonInKm(
-                location.coords.latitude,
-                location.coords.longitude,
+                location.current.latitude,
+                location.current.longitude,
                 position[0],
                 position[1]
               );
 
               const angle = getAngle(
-                location.coords.latitude,
-                location.coords.longitude,
+                location.current.latitude,
+                location.current.longitude,
                 position[0],
                 position[1]
               );
@@ -73,8 +56,8 @@ export default function HomeScreen() {
           <View
             style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
           >
-            <StyledText>Latitude: {locations.current.latitude}</StyledText>
-            <StyledText>Longitude: {locations.current.longitude}</StyledText>
+            <StyledText>Latitude: {location.current.latitude}</StyledText>
+            <StyledText>Longitude: {location.current.longitude}</StyledText>
           </View>
         </View>
       }
