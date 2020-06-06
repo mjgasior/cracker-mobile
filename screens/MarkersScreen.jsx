@@ -28,10 +28,10 @@ export const MarkersScreen = () => {
             );
 
             const angle = getAngle(
-              location.coords.latitude,
-              location.coords.longitude,
               position[0],
-              position[1]
+              position[1],
+              location.coords.latitude,
+              location.coords.longitude
             );
 
             return (
