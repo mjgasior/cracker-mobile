@@ -1,9 +1,25 @@
 export function getAngle(lat1, lon1, lat2, lon2) {
   const deltaX = lat1 - lat2;
   const deltaY = lon1 - lon2;
+  console.log("DELTAS", deltaX, deltaY);
+
+  if (deltaY === 0) {
+    return 0;
+  }
+
   const radians = Math.atan(deltaX / deltaY);
   const degrees = (radians * 180) / Math.PI;
   return degrees;
+}
+
+export function getAngle2(latA, lonA, latB, lonB, lat0, lon0) {
+  const x1 = latA - lat0;
+  const y1 = lonA - lon0;
+  const x2 = latB - lat0;
+  const y2 = lonB - lon0;
+  console.log("POINTS", x1, y1, x2, y2);
+
+  return getAngle(x1, y1, x2, y2);
 }
 
 export function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {

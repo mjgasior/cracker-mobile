@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Image, Platform, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { StyledText } from "../+components/StyledText";
 import { useLocation } from "./+hooks/useLocation";
 import { useMarkers } from "./+hooks/useMarkers";
-import { getDistanceFromLatLonInKm, getAngle } from "./+utils/distance";
+import {
+  getDistanceFromLatLonInKm,
+  getAngle,
+  getAngle2,
+} from "./+utils/distance";
 import { Marker } from "./+components/Marker";
 import { Arrow } from "./+components/Arrow";
 
 export default function HomeScreen() {
   const location = useLocation();
   const { data } = useMarkers();
-
-  const [degree, setDegree] = useState(0);
 
   const canShowDistance = location && data && data.markers.length > 0;
 
@@ -44,9 +46,24 @@ export default function HomeScreen() {
                 position[1]
               );
 
-              return <Marker key={i} distance={distance} angle={angle} />;
+              const angle2 = getAngle2(
+                location.current.latitude,
+                location.current.longitude,
+                location.previous.latitude,
+                location.previous.longitude,
+                position[0],
+                position[1]
+              );
+
+              return (
+                <Marker
+                  key={i}
+                  distance={distance}
+                  angle={angle}
+                  degrees={angle2}
+                />
+              );
             })}
-          <Arrow degree={degree} />
         </View>
       </ScrollView>
 
