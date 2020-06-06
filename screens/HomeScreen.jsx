@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { Image, Platform, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { StyledText } from "../+components/StyledText";
@@ -11,6 +11,25 @@ import { Arrow } from "./+components/Arrow";
 export default function HomeScreen() {
   const location = useLocation();
   const { data } = useMarkers();
+
+  const [degree, setDegree] = useState(0);
+  const [locations, setLocations] = useState({
+    current: { latitude: 0, longitude: 0 },
+    previous: { latitude: 0, longitude: 0 },
+  });
+
+  useEffect(() => {
+    if (location) {
+      setLocations((prev) => {
+        return {
+          current: {
+            ...location.coords,
+          },
+          previous: prev.current,
+        };
+      });
+    }
+  }, [location]);
 
   const canShowDistance = location && data && data.markers.length > 0;
 
@@ -44,21 +63,21 @@ export default function HomeScreen() {
 
               return <Marker key={i} distance={distance} angle={angle} />;
             })}
-          <Arrow degree={30} />
+          <Arrow degree={degree} />
         </View>
       </ScrollView>
 
-      {location && (
+      {
         <View style={styles.tabBarInfoContainer}>
           <StyledText>Your current location now:</StyledText>
           <View
             style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
           >
-            <StyledText>Latitude: {location.coords.latitude}</StyledText>
-            <StyledText>Longitude: {location.coords.longitude}</StyledText>
+            <StyledText>Latitude: {locations.current.latitude}</StyledText>
+            <StyledText>Longitude: {locations.current.longitude}</StyledText>
           </View>
         </View>
-      )}
+      }
     </View>
   );
 }
