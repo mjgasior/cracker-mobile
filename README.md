@@ -50,5 +50,8 @@ Success
 
 - [Calculate distance between two latitude-longitude points? (Haversine formula)](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
 - [Compass made with magnetometer](https://github.com/rahulhaque/compass-react-native/blob/master/App.js)
+- [Device orientation](https://docs.expo.io/versions/latest/sdk/devicemotion/)
+- [Heading API in Expo](https://docs.expo.io/versions/latest/sdk/location/#locationgetheadingasync)
 - [Latitude/Longitude Distance Calculator](https://www.nhc.noaa.gov/gccalc.shtml)
+- [North with magnetometer](https://www.w3.org/TR/magnetometer/)
 - [Unsure Programmer YouTube channel about React Native](https://www.youtube.com/channel/UCiNWv52iO_OAdZ12kslG4Cg/videos)
