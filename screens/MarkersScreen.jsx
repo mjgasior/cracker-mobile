@@ -1,10 +1,9 @@
 import React from "react";
-import { View, Animated } from "react-native";
+import { View, Text } from "react-native";
 import { Container } from "./+components/Container";
 import { Logo } from "./+components/Logo";
 import { useMarkers } from "./+hooks/useMarkers";
-import { getDistanceFromLatLonInKm } from "./+utils/distance";
-import { StyledText } from "../+components/StyledText";
+import { getDistanceFromLatLonInKm, getAngle } from "./+utils/distance";
 import { useLoc } from "./+hooks/useLoc";
 import { Marker } from "./+components/Marker";
 import { NavigationBar } from "./+components/NavigationBar";
@@ -28,7 +27,22 @@ export const MarkersScreen = () => {
               position[1]
             );
 
-            return <Marker key={i} distance={distance} angle={0} />;
+            const angle = getAngle(
+              location.coords.latitude,
+              location.coords.longitude,
+              position[0],
+              position[1]
+            );
+
+            return (
+              <>
+                <Marker key={i} distance={distance} angle={angle} />
+                <Text>
+                  Lat: {position[0].toPrecision(6)} Lon:{" "}
+                  {position[1].toPrecision(6)}
+                </Text>
+              </>
+            );
           })}
       </View>
       {location && <NavigationBar location={location} />}

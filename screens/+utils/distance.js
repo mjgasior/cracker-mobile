@@ -6,12 +6,11 @@ export function getAngle(lat1, lon1, lat2, lon2) {
     return 0;
   }
 
-  /*if (Math.abs(deltaX) < 0.000001 && Math.abs(deltaY) < 0.000001) {
-    console.log("This is too small");
-    return 0;
-  }*/
-
-  return Math.atan(deltaX / deltaY);
+  const radians = Math.atan(deltaX / deltaY);
+  if (deltaY < 0) {
+    return radians + Math.PI;
+  }
+  return radians;
 }
 
 export function getAngle2(latA, lonA, latB, lonB, lat0, lon0) {

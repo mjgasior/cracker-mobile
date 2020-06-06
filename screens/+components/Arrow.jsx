@@ -4,6 +4,8 @@ import { View, Text, Animated } from "react-native";
 export const Arrow = ({ degree }) => {
   const [fadeAnim] = useState(new Animated.Value(0));
 
+  const adjustedAngle = adjustArrowAngleToStartAsRightArrow(degree);
+
   useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 1,
@@ -12,13 +14,10 @@ export const Arrow = ({ degree }) => {
   }, []);
 
   return (
-    <Animated.View // Special animatable View
+    <Animated.View
       style={{
-        opacity: fadeAnim, // Bind opacity to animated value
-        transform: [
-          { rotateZ: degree },
-          { perspective: 1000 }, // without this line this Animation will not render on Android while working fine on iOS
-        ],
+        opacity: fadeAnim,
+        transform: [{ rotateZ: adjustedAngle }, { perspective: 1000 }],
       }}
     >
       <View>
@@ -27,3 +26,7 @@ export const Arrow = ({ degree }) => {
     </Animated.View>
   );
 };
+
+function adjustArrowAngleToStartAsRightArrow(radians) {
+  return radians - Math.PI / 2;
+}

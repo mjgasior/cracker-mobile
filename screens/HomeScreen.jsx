@@ -9,7 +9,8 @@ import { Marker } from "./+components/Marker";
 import { Logo } from "./+components/Logo";
 
 export default function HomeScreen() {
-  const location = useLocation();
+  return <View></View>;
+  /* const location = useLocation();
   const { data } = useMarkers();
 
   const canShowDistance = location && data && data.markers.length > 0;
@@ -56,7 +57,7 @@ export default function HomeScreen() {
         </View>
       </View>
     </View>
-  );
+  ); */
 }
 
 HomeScreen.navigationOptions = {
