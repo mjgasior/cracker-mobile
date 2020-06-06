@@ -39,13 +39,6 @@ export default function HomeScreen() {
                 position[1]
               );
 
-              const angle = getAngle(
-                location.current.latitude,
-                location.current.longitude,
-                position[0],
-                position[1]
-              );
-
               const angle2 = getAngle2(
                 location.current.latitude,
                 location.current.longitude,
@@ -55,14 +48,7 @@ export default function HomeScreen() {
                 position[1]
               );
 
-              return (
-                <Marker
-                  key={i}
-                  distance={distance}
-                  angle={angle}
-                  degrees={angle2}
-                />
-              );
+              return <Marker key={i} distance={distance} angle={angle2} />;
             })}
         </View>
       </ScrollView>

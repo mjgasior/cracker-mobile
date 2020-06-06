@@ -1,21 +1,9 @@
 import * as React from "react";
-import { View, Animated } from "react-native";
-import styled from "styled-components/native";
+import { View } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import { Arrow } from "./Arrow";
 
-const RotatedBox = Animated.createAnimatedComponent(styled.View`
-  transform: ${(props) => `rotate(${props.angle}deg)`};
-  font-variant: small-caps;
-  background: #ffd42a;
-  width: 17px;
-  height: 17px;
-  border: 0px solid #0f4c81;
-  border-top-width: 3px;
-  border-left-width: 3px;
-`);
-
-export const Marker = ({ distance, angle, degrees }) => {
+export const Marker = ({ distance, angle }) => {
   const formattedDistance = formatDistance(distance);
   return (
     <View
@@ -26,9 +14,10 @@ export const Marker = ({ distance, angle, degrees }) => {
         marginBottom: 20,
       }}
     >
-      <Arrow degree={degrees} />
-      <RotatedBox angle={angle} />
-      <StyledText>This marker is {formattedDistance} from you.</StyledText>
+      <Arrow degree={angle} />
+      <StyledText>
+        This marker is {formattedDistance} from you {formatRadians(angle)}.
+      </StyledText>
     </View>
   );
 };
@@ -39,4 +28,9 @@ const formatDistance = (distance) => {
     return `${meters} meters`;
   }
   return `${distance.toPrecision(3)} kilometers`;
+};
+
+const formatRadians = (radians) => {
+  const degrees = (radians * 180) / Math.PI;
+  return degrees.toPrecision(3);
 };
