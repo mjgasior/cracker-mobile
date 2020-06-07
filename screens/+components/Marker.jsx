@@ -5,9 +5,6 @@ import { Arrow } from "./Arrow";
 
 export const Marker = ({ distance, angle, heading }) => {
   const formattedDistance = formatDistance(distance);
-  console.log("WHERE TO HEAD?");
-  console.log((angle * 180) / Math.PI);
-  console.log((heading * 180) / Math.PI);
   const absAngle = Math.abs(angle - heading);
   return (
     <View
