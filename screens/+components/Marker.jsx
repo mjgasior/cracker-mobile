@@ -5,10 +5,7 @@ import { Arrow } from "./Arrow";
 
 export const Marker = ({ distance, angle, heading }) => {
   const formattedDistance = formatDistance(distance);
-  const radiansDifference = angle - heading;
-  console.log("NEW");
-  console.log((angle * 180) / Math.PI);
-  console.log((heading * 180) / Math.PI);
+  const transposedAngle = heading + angle;
   return (
     <View
       style={{
@@ -22,7 +19,7 @@ export const Marker = ({ distance, angle, heading }) => {
       <StyledText>
         This marker is {formattedDistance} away ({formatToDegrees(angle)}).
       </StyledText>
-      <Arrow radians={radiansDifference} />
+      <Arrow radians={transposedAngle} />
     </View>
   );
 };
