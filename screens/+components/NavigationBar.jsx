@@ -1,6 +1,7 @@
 import React from "react";
 import { Platform, StyleSheet, View, Animated } from "react-native";
 import { StyledText } from "../../+components/StyledText";
+import { Heading } from "./Heading";
 
 export const NavigationBar = ({ location }) => {
   return (
@@ -21,6 +22,7 @@ export const NavigationBar = ({ location }) => {
         <StyledText>Longitude: {location.coords.longitude}</StyledText>
         <StyledText>Heading: {location.coords.heading}</StyledText>
       </View>
+      <Heading />
     </View>
   );
 };
