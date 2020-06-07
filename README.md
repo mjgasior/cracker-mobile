@@ -10,7 +10,7 @@ This is a React Native app. I got pretty frustrated during the development. If y
 
 ## Setup:
 
-0. If you don't have the `expo-cli` already, run `npm install expo-cli --global` (currently used version is `expo-cli@3.21.3` with `node@v12.16.1` and `npm@6.13.4`). It's also good to have the `Expo` [app installed on your phone](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pl).
+0. If you don't have the `expo-cli` already, run `npm install expo-cli --global` (currently used version is `expo-cli@3.21.3` with `node@v12.16.1` and `npm@6.13.4`). It's also good to have the `Expo` [app installed on your phone](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pl). Remember that if you use the Expo phone app, the phone and the laptop have to be in the same network (for example, connected to the same Wi-fi spot).
 1. `yarn`
 2. Define the API address in the `app.json` file in `apiAddress` property.
 3. To run the project run `yarn start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `yarn/npm start`).

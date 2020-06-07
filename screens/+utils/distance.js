@@ -6,11 +6,15 @@ export function getAngle(lat1, lon1, lat2, lon2) {
     return 0;
   }
 
-  const radians = Math.atan(deltaX / deltaY);
+  const radians = adjustToNorthAs0(Math.atan(deltaX / deltaY));
   if (deltaY < 0) {
     return radians + Math.PI;
   }
   return radians;
+}
+
+function adjustToNorthAs0(radians) {
+  return radians - Math.PI / 2;
 }
 
 export function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {

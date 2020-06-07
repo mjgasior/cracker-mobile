@@ -3,7 +3,10 @@ import { View } from "react-native";
 import { Container } from "./+components/Container";
 import { Logo } from "./+components/Logo";
 import { useMarkers } from "./+hooks/useMarkers";
-import { getDistanceFromLatLonInKm, getAngle } from "./+utils/distance";
+import {
+  getDistanceFromLatLonInKm,
+  getAngle as getAngleInRadians,
+} from "./+utils/distance";
 import { useLocation } from "./+hooks/useLocation";
 import { Marker } from "./+components/Marker";
 import { NavigationBar } from "./+components/NavigationBar";
@@ -27,7 +30,7 @@ export const MarkersScreen = () => {
               position[1]
             );
 
-            const angle = getAngle(
+            const angle = getAngleInRadians(
               position[0],
               position[1],
               location.coords.latitude,

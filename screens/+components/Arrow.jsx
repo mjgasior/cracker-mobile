@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Animated } from "react-native";
 
-export const Arrow = ({ degree }) => {
+export const Arrow = ({ radians }) => {
   const [fadeAnim] = useState(new Animated.Value(0));
-
-  const adjustedAngle = adjustArrowAngleToStartAsRightArrow(degree);
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -17,7 +15,10 @@ export const Arrow = ({ degree }) => {
     <Animated.View
       style={{
         opacity: fadeAnim,
-        transform: [{ rotateZ: adjustedAngle }, { perspective: 1000 }],
+        transform: [
+          { rotateZ: getCounterClockwise(radians) },
+          { perspective: 1000 },
+        ],
       }}
     >
       <View>
@@ -27,6 +28,6 @@ export const Arrow = ({ degree }) => {
   );
 };
 
-function adjustArrowAngleToStartAsRightArrow(radians) {
-  return radians - Math.PI / 2;
+function getCounterClockwise(rad) {
+  return -rad;
 }

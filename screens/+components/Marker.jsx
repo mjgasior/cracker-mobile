@@ -5,10 +5,7 @@ import { Arrow } from "./Arrow";
 
 export const Marker = ({ distance, angle, heading }) => {
   const formattedDistance = formatDistance(distance);
-  console.log("WHERE TO HEAD?");
-  console.log((angle * 180) / Math.PI);
-  console.log((heading * 180) / Math.PI);
-  const absAngle = Math.abs(angle - heading);
+  const transposedAngle = heading + angle;
   return (
     <View
       style={{
@@ -18,11 +15,11 @@ export const Marker = ({ distance, angle, heading }) => {
         marginBottom: 20,
       }}
     >
-      <Arrow degree={angle} />
+      <Arrow radians={angle} />
       <StyledText>
-        This marker is {formattedDistance} away ({formatRadians(angle)}°).
+        This marker is {formattedDistance} away ({formatToDegrees(angle)}).
       </StyledText>
-      <Arrow degree={absAngle} />
+      <Arrow radians={transposedAngle} />
     </View>
   );
 };
@@ -35,7 +32,7 @@ const formatDistance = (distance) => {
   return `${distance.toPrecision(3)} km`;
 };
 
-const formatRadians = (radians) => {
+const formatToDegrees = (radians) => {
   const degrees = (radians * 180) / Math.PI;
-  return degrees.toPrecision(3);
+  return `${degrees.toPrecision(3)}°`;
 };
