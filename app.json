@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "crackermobile",
-    "slug": "crackermobile",
+    "name": "Cracker",
+    "slug": "cracker",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
