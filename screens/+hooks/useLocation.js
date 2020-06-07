@@ -24,12 +24,9 @@ export const useLocation = () => {
               timeInterval: 1000,
             },
             async (locationData) => {
-              setLocation(locationData);
               const headingData = await Location.getHeadingAsync();
-              console.log(
-                locationData.coords.heading - headingData.trueHeading
-              );
-              console.log(headingData);
+              locationData.coords.heading = headingData.trueHeading;
+              setLocation(locationData);
             }
           );
           setSubscription(subscriptionObject);
