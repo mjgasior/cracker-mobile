@@ -5,7 +5,7 @@ import { Arrow } from "./Arrow";
 
 export const Marker = ({ distance, angle, heading }) => {
   const formattedDistance = formatDistance(distance);
-  const absAngle = Math.abs(angle - heading);
+  const absAngle = angle - heading;
   console.log("NEW");
   console.log((angle * 180) / Math.PI);
   console.log((heading * 180) / Math.PI);
