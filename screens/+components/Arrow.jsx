@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Animated } from "react-native";
 
-export const Arrow = ({ degree }) => {
+export const Arrow = ({ radians }) => {
   const [fadeAnim] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -15,7 +15,10 @@ export const Arrow = ({ degree }) => {
     <Animated.View
       style={{
         opacity: fadeAnim,
-        transform: [{ rotateZ: degree }, { perspective: 1000 }],
+        transform: [
+          { rotateZ: getCounterClockwise(radians) },
+          { perspective: 1000 },
+        ],
       }}
     >
       <View>
@@ -24,3 +27,7 @@ export const Arrow = ({ degree }) => {
     </Animated.View>
   );
 };
+
+function getCounterClockwise(rad) {
+  return -rad;
+}
