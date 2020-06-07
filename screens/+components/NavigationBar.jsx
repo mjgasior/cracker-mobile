@@ -9,7 +9,7 @@ export const NavigationBar = ({ location }) => {
       <Animated.View
         style={{
           transform: [
-            { rotateZ: (location.coords.heading * Math.PI) / 180 },
+            { rotateZ: -(location.coords.heading * Math.PI) / 180 },
             { perspective: 1000 },
           ],
         }}
