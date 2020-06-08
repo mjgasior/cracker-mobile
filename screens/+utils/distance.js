@@ -1,4 +1,4 @@
-export function getAngle(lat1, lon1, lat2, lon2) {
+export function getAngleInRadians(lat1, lon1, lat2, lon2) {
   const deltaX = lat1 - lat2;
   const deltaY = lon1 - lon2;
 

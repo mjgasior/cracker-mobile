@@ -6,7 +6,7 @@ import { Logo } from "./+components/Logo";
 import { useMarkers } from "./+hooks/useMarkers";
 import {
   getDistanceFromLatLonInKm,
-  getAngle as getAngleInRadians,
+  getAngleInRadians,
 } from "./+utils/distance";
 import { useLocation } from "./+hooks/useLocation";
 import { Marker } from "./+components/Marker";
