@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Container } from "./+components/Container";
@@ -13,14 +13,30 @@ import { Marker } from "./+components/Marker";
 import { NavigationBar } from "./+components/NavigationBar";
 
 export const MarkersScreen = () => {
+  const [isNavigationBar, setIsNavigationBar] = useState(true);
   const { data } = useMarkers();
   const location = useLocation();
+
+  const onScroll = (e) => {
+    const yOffset = e.nativeEvent.contentOffset.y;
+    if (yOffset > 40 && isNavigationBar) {
+      setIsNavigationBar(false);
+      return;
+    }
+
+    if (yOffset < 30 && !isNavigationBar) {
+      setIsNavigationBar(true);
+    }
+  };
 
   const canShowMarkers = location && data && data.markers.length > 0;
   return (
     <Container>
       <Logo />
-      <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
+      <ScrollView
+        onScroll={onScroll}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
         <View>
           {canShowMarkers &&
             data.markers.map(({ position }, i) => {
@@ -49,7 +65,9 @@ export const MarkersScreen = () => {
             })}
         </View>
       </ScrollView>
-      {location && <NavigationBar location={location} />}
+      {location && (
+        <NavigationBar location={location} isHidden={isNavigationBar} />
+      )}
     </Container>
   );
 };

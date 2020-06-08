@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Platform, StyleSheet, View, Animated } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 
-export const NavigationBar = ({ location }) => {
+export const NavigationBar = ({ location, isHidden }) => {
+  const [fadeAnimation] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(fadeAnimation, {
+      toValue: isHidden ? 1 : 0,
+      duration: 500,
+    }).start();
+  }, [isHidden]);
+
   return (
-    <View style={styles.tabBarInfoContainer}>
+    <Animated.View
+      style={[
+        styles.tabBarInfoContainer,
+        {
+          opacity: fadeAnimation,
+        },
+      ]}
+    >
       <Animated.View
         style={{
           transform: [
@@ -21,7 +37,7 @@ export const NavigationBar = ({ location }) => {
         <StyledText>Longitude: {location.coords.longitude}</StyledText>
         <StyledText>Heading: {location.coords.heading}</StyledText>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 
