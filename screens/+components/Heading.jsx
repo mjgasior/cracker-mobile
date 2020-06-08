@@ -2,12 +2,13 @@ import React from "react";
 import { View, Text, Animated } from "react-native";
 import { useHeading } from "../+hooks/useHeading";
 import { StyledText } from "../../+components/StyledText";
+import { deg2rad } from "../+utils/distance";
 
 export const Heading = () => {
   const heading = useHeading();
 
   if (heading) {
-    const radianAngle = -(heading.trueHeading * Math.PI) / 180;
+    const radianAngle = -deg2rad(heading.trueHeading);
     return (
       <>
         <Animated.View

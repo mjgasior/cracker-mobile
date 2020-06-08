@@ -1,4 +1,4 @@
-export function getAngle(lat1, lon1, lat2, lon2) {
+export function getAngleInRadians(lat1, lon1, lat2, lon2) {
   const deltaX = lat1 - lat2;
   const deltaY = lon1 - lon2;
 
@@ -36,6 +36,10 @@ export function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   return d;
 }
 
-function deg2rad(deg) {
+export function deg2rad(deg) {
   return deg * (Math.PI / 180);
+}
+
+export function rad2deg(rad) {
+  return rad * (180 / Math.PI);
 }

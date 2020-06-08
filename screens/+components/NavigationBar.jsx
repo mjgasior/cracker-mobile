@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Platform, StyleSheet, View, Animated } from "react-native";
 import { StyledText } from "../../+components/StyledText";
+import { deg2rad } from "../+utils/distance";
 
-export const NavigationBar = ({ location }) => {
+export const NavigationBar = ({ location, isHidden }) => {
+  const [hideAnimation] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(hideAnimation, {
+      toValue: isHidden ? 0 : -100,
+      duration: 500,
+    }).start();
+  }, [isHidden]);
+
   return (
-    <View style={styles.tabBarInfoContainer}>
+    <Animated.View
+      style={[
+        styles.tabBarInfoContainer,
+        {
+          bottom: hideAnimation,
+        },
+      ]}
+    >
       <Animated.View
         style={{
           transform: [
-            { rotateZ: -(location.coords.heading * Math.PI) / 180 },
+            { rotateZ: -deg2rad(location.coords.heading) },
             { perspective: 1000 },
           ],
         }}
@@ -21,7 +38,7 @@ export const NavigationBar = ({ location }) => {
         <StyledText>Longitude: {location.coords.longitude}</StyledText>
         <StyledText>Heading: {location.coords.heading}</StyledText>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 
