@@ -7,6 +7,7 @@ import { useMarkers } from "./+hooks/useMarkers";
 import {
   getDistanceFromLatLonInKm,
   getAngleInRadians,
+  rad2deg,
 } from "./+utils/distance";
 import { useLocation } from "./+hooks/useLocation";
 import { Marker } from "./+components/Marker";
@@ -59,7 +60,7 @@ export const MarkersScreen = () => {
                   key={i}
                   distance={distance}
                   angle={angle}
-                  heading={(location.coords.heading * Math.PI) / 180}
+                  heading={rad2deg(location.coords.heading)}
                 />
               );
             })}

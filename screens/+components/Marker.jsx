@@ -2,6 +2,7 @@ import * as React from "react";
 import { View } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import { Arrow } from "./Arrow";
+import { rad2deg } from "../+utils/distance";
 
 export const Marker = ({ distance, angle, heading }) => {
   const formattedDistance = formatDistance(distance);
@@ -33,6 +34,6 @@ const formatDistance = (distance) => {
 };
 
 const formatToDegrees = (radians) => {
-  const degrees = (radians * 180) / Math.PI;
+  const degrees = rad2deg(radians);
   return `${degrees.toPrecision(3)}°`;
 };

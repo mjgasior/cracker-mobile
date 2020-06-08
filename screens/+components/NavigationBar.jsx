@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Platform, StyleSheet, View, Animated } from "react-native";
 import { StyledText } from "../../+components/StyledText";
+import { deg2rad } from "../+utils/distance";
 
 export const NavigationBar = ({ location, isHidden }) => {
   const [hideAnimation] = useState(new Animated.Value(0));
@@ -24,7 +25,7 @@ export const NavigationBar = ({ location, isHidden }) => {
       <Animated.View
         style={{
           transform: [
-            { rotateZ: -(location.coords.heading * Math.PI) / 180 },
+            { rotateZ: -deg2rad(location.coords.heading) },
             { perspective: 1000 },
           ],
         }}
