@@ -35,7 +35,7 @@ export const MarkersScreen = () => {
       <Logo />
       <ScrollView
         onScroll={onScroll}
-        contentContainerStyle={{ paddingBottom: 100 }}
+        contentContainerStyle={{ paddingBottom: 50 }}
       >
         <View>
           {canShowMarkers &&

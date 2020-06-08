@@ -3,11 +3,11 @@ import { Platform, StyleSheet, View, Animated } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 
 export const NavigationBar = ({ location, isHidden }) => {
-  const [fadeAnimation] = useState(new Animated.Value(0));
+  const [hideAnimation] = useState(new Animated.Value(0));
 
   useEffect(() => {
-    Animated.timing(fadeAnimation, {
-      toValue: isHidden ? 1 : 0,
+    Animated.timing(hideAnimation, {
+      toValue: isHidden ? 0 : -100,
       duration: 500,
     }).start();
   }, [isHidden]);
@@ -17,7 +17,7 @@ export const NavigationBar = ({ location, isHidden }) => {
       style={[
         styles.tabBarInfoContainer,
         {
-          opacity: fadeAnimation,
+          bottom: hideAnimation,
         },
       ]}
     >
