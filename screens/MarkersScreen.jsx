@@ -1,5 +1,6 @@
 import React from "react";
 import { View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { Container } from "./+components/Container";
 import { Logo } from "./+components/Logo";
 import { useMarkers } from "./+hooks/useMarkers";
@@ -19,35 +20,36 @@ export const MarkersScreen = () => {
   return (
     <Container>
       <Logo />
+      <ScrollView>
+        <View>
+          {canShowMarkers &&
+            data.markers.map(({ position }, i) => {
+              const distance = getDistanceFromLatLonInKm(
+                location.coords.latitude,
+                location.coords.longitude,
+                position[0],
+                position[1]
+              );
 
-      <View>
-        {canShowMarkers &&
-          data.markers.map(({ position }, i) => {
-            const distance = getDistanceFromLatLonInKm(
-              location.coords.latitude,
-              location.coords.longitude,
-              position[0],
-              position[1]
-            );
+              const angle = getAngleInRadians(
+                position[0],
+                position[1],
+                location.coords.latitude,
+                location.coords.longitude
+              );
 
-            const angle = getAngleInRadians(
-              position[0],
-              position[1],
-              location.coords.latitude,
-              location.coords.longitude
-            );
-
-            return (
-              <Marker
-                key={i}
-                distance={distance}
-                angle={angle}
-                heading={(location.coords.heading * Math.PI) / 180}
-              />
-            );
-          })}
-      </View>
-      {location && <NavigationBar location={location} />}
+              return (
+                <Marker
+                  key={i}
+                  distance={distance}
+                  angle={angle}
+                  heading={(location.coords.heading * Math.PI) / 180}
+                />
+              );
+            })}
+        </View>
+      </ScrollView>
+      {false && <NavigationBar location={location} />}
     </Container>
   );
 };
