@@ -20,7 +20,7 @@ export const MarkersScreen = () => {
   return (
     <Container>
       <Logo />
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
         <View>
           {canShowMarkers &&
             data.markers.map(({ position }, i) => {
@@ -49,7 +49,7 @@ export const MarkersScreen = () => {
             })}
         </View>
       </ScrollView>
-      {false && <NavigationBar location={location} />}
+      {location && <NavigationBar location={location} />}
     </Container>
   );
 };
