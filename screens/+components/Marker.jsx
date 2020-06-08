@@ -3,25 +3,28 @@ import { View } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import { Arrow } from "./Arrow";
 import { rad2deg } from "../+utils/distance";
+import styled from "styled-components/native";
+
+const MarkerContainer = styled.View`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 3px;
+`;
 
 export const Marker = ({ distance, angle, heading }) => {
   const formattedDistance = formatDistance(distance);
   const transposedAngle = heading + angle;
   return (
-    <View
-      style={{
-        marginTop: 10,
-        alignItems: "center",
-        marginTop: 10,
-        marginBottom: 20,
-      }}
-    >
+    <MarkerContainer>
       <Arrow radians={angle} />
       <StyledText>
         This marker is {formattedDistance} away ({formatToDegrees(angle)}).
       </StyledText>
       <Arrow radians={transposedAngle} />
-    </View>
+    </MarkerContainer>
   );
 };
 

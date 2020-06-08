@@ -20,12 +20,12 @@ export const MarkersScreen = () => {
 
   const onScroll = (e) => {
     const yOffset = e.nativeEvent.contentOffset.y;
-    if (yOffset > 40 && isNavigationBar) {
+    if (yOffset > 30 && isNavigationBar) {
       setIsNavigationBar(false);
       return;
     }
 
-    if (yOffset < 30 && !isNavigationBar) {
+    if (yOffset < 20 && !isNavigationBar) {
       setIsNavigationBar(true);
     }
   };
