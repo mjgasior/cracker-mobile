@@ -3,7 +3,7 @@ import { Platform, StyleSheet, View, Animated } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import { deg2rad } from "../+utils/distance";
 
-export const NavigationBar = ({ location, isHidden }) => {
+export const PositionBar = ({ location, isHidden }) => {
   const [hideAnimation] = useState(new Animated.Value(0));
 
   useEffect(() => {

@@ -11,22 +11,22 @@ import {
 } from "./+utils/distance";
 import { useLocation } from "./+hooks/useLocation";
 import { Marker } from "./+components/Marker";
-import { NavigationBar } from "./+components/NavigationBar";
+import { PositionBar } from "./+components/PositionBar";
 
 export const MarkersScreen = () => {
-  const [isNavigationBar, setIsNavigationBar] = useState(true);
+  const [isPositionBar, setIsPositionBar] = useState(true);
   const { data } = useMarkers();
   const location = useLocation();
 
   const onScroll = (e) => {
     const yOffset = e.nativeEvent.contentOffset.y;
-    if (yOffset > 30 && isNavigationBar) {
-      setIsNavigationBar(false);
+    if (yOffset > 30 && isPositionBar) {
+      setIsPositionBar(false);
       return;
     }
 
-    if (yOffset < 20 && !isNavigationBar) {
-      setIsNavigationBar(true);
+    if (yOffset < 20 && !isPositionBar) {
+      setIsPositionBar(true);
     }
   };
 
@@ -66,9 +66,7 @@ export const MarkersScreen = () => {
             })}
         </View>
       </ScrollView>
-      {location && (
-        <NavigationBar location={location} isHidden={isNavigationBar} />
-      )}
+      {location && <PositionBar location={location} isHidden={isPositionBar} />}
     </Container>
   );
 };
