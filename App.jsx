@@ -1,9 +1,12 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { client, ApolloProvider } from "./+utils/apolloSetup";
 
 import { useCachedResources } from "./+hooks/useCachedResources";
 import { MarkersScreen } from "./screens/MarkersScreen";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -13,17 +16,12 @@ export default function App() {
   } else {
     return (
       <ApolloProvider client={client}>
-        <View style={styles.container}>
-          <MarkersScreen />
-        </View>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={MarkersScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </ApolloProvider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-});
