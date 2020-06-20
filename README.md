@@ -1,4 +1,4 @@
-![Cracker app logo](/assets/images/logo.svg)
+![Cracker app logo](/+assets/images/logo.svg)
 
 # cracker-mobile
 
