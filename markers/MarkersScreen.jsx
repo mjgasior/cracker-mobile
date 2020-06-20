@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Container } from "./+components/Container";
 import { Logo } from "./+components/Logo";
@@ -13,7 +13,7 @@ import { useLocation } from "./+hooks/useLocation";
 import { Marker } from "./+components/Marker";
 import { PositionBar } from "./+components/PositionBar";
 
-export const MarkersScreen = () => {
+export const MarkersScreen = ({ navigation }) => {
   const [isPositionBar, setIsPositionBar] = useState(true);
   const { data } = useMarkers();
   const location = useLocation();
@@ -64,6 +64,11 @@ export const MarkersScreen = () => {
                 />
               );
             })}
+
+          <Button
+            title="Go to Details"
+            onPress={() => navigation.navigate("Details")}
+          />
         </View>
       </ScrollView>
       {location && <PositionBar location={location} isHidden={isPositionBar} />}

@@ -5,6 +5,7 @@ import { client, ApolloProvider } from "./+utils/apolloSetup";
 
 import { useCachedResources } from "./+hooks/useCachedResources";
 import { MarkersScreen } from "./markers/MarkersScreen";
+import { DetailsScreen } from "./details/DetailsScreen";
 
 const Stack = createStackNavigator();
 
@@ -17,8 +18,9 @@ export default function App() {
     return (
       <ApolloProvider client={client}>
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator initialRouteName="Details">
             <Stack.Screen name="Home" component={MarkersScreen} />
+            <Stack.Screen name="Details" component={DetailsScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </ApolloProvider>
