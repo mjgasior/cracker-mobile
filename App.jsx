@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { client, ApolloProvider } from "./+utils/apolloSetup";
 
 import { useCachedResources } from "./+hooks/useCachedResources";
-import { MarkersScreen } from "./screens/MarkersScreen";
+import { MarkersScreen } from "./markers/MarkersScreen";
 
 const Stack = createStackNavigator();
 
