@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View } from "react-native";
+import { Button } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import { Arrow } from "./Arrow";
 import { rad2deg } from "../+utils/distance";
@@ -14,7 +14,7 @@ const MarkerContainer = styled.View`
   padding: 3px;
 `;
 
-export const Marker = ({ distance, angle, heading }) => {
+export const Marker = ({ distance, angle, heading, onPress }) => {
   const formattedDistance = formatDistance(distance);
   const transposedAngle = heading + angle;
   return (
@@ -24,6 +24,7 @@ export const Marker = ({ distance, angle, heading }) => {
         This marker is {formattedDistance} away ({formatToDegrees(angle)}).
       </StyledText>
       <Arrow radians={transposedAngle} />
+      <Button title="Show" onPress={onPress} />
     </MarkerContainer>
   );
 };
