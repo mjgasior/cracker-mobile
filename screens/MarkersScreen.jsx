@@ -40,17 +40,17 @@ export const MarkersScreen = () => {
       >
         <View>
           {canShowMarkers &&
-            data.markers.map(({ position }, i) => {
+            data.markers.map(({ latitude, longitude }, i) => {
               const distance = getDistanceFromLatLonInKm(
                 location.coords.latitude,
                 location.coords.longitude,
-                position[0],
-                position[1]
+                latitude,
+                longitude
               );
 
               const angle = getAngleInRadians(
-                position[0],
-                position[1],
+                latitude,
+                longitude,
                 location.coords.latitude,
                 location.coords.longitude
               );

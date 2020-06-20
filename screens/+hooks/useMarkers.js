@@ -4,7 +4,12 @@ import { gql } from "apollo-boost";
 const MARKERS = gql`
   {
     markers {
-      position
+      latitude
+      longitude
+      description {
+        polish
+        english
+      }
       _id
     }
   }
