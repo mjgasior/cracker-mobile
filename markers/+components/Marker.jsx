@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import { Arrow } from "./../../+components/Arrow";
 import styled from "styled-components/native";
@@ -22,14 +22,15 @@ export const Marker = ({ name, distance, angle, heading, onPress }) => {
 
   const transposedAngle = heading + angle;
   return (
-    <MarkerContainer>
-      <Arrow radians={angle} />
-      <StyledText>{name}</StyledText>
-      <StyledText>
-        This marker is {formattedDistance} away ({formatToDegrees(angle)}).
-      </StyledText>
-      <Arrow radians={transposedAngle} />
-      <Button title="Show" onPress={onPress} />
-    </MarkerContainer>
+    <TouchableOpacity onPress={onPress}>
+      <MarkerContainer>
+        <Arrow radians={angle} />
+        <StyledText>{name}</StyledText>
+        <StyledText>
+          This marker is {formattedDistance} away ({formatToDegrees(angle)}).
+        </StyledText>
+        <Arrow radians={transposedAngle} />
+      </MarkerContainer>
+    </TouchableOpacity>
   );
 };

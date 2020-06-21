@@ -21,7 +21,11 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator initialRouteName={ROUTES.MARKERS}>
             <Stack.Screen name={ROUTES.MARKERS} component={MarkersScreen} />
-            <Stack.Screen name={ROUTES.DETAILS} component={DetailsScreen} />
+            <Stack.Screen
+              name={ROUTES.DETAILS}
+              component={DetailsScreen}
+              options={({ route }) => ({ title: route.params.name })}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </ApolloProvider>

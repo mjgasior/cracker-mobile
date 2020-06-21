@@ -17,7 +17,7 @@ const TextBlock = styled.Text`
   margin-bottom: 10px;
 `;
 
-export const DetailsScreen = ({ navigation, route }) => {
+export const DetailsScreen = ({ route }) => {
   const location = useLocation();
   const { latitude, longitude, description, name } = route.params;
 
@@ -40,7 +40,6 @@ export const DetailsScreen = ({ navigation, route }) => {
     const transposedAngle = angle + rad2deg(location.coords.heading);
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <TextBlock>{name}</TextBlock>
         <Arrow radians={angle} />
         <StyledText>
           This marker is {formattedDistance} away ({formatToDegrees(angle)}).
@@ -48,7 +47,6 @@ export const DetailsScreen = ({ navigation, route }) => {
         <Arrow radians={transposedAngle} />
         <TextBlock>{description.polish}</TextBlock>
         <TextBlock>{description.english}</TextBlock>
-        <Button title="Go back" onPress={navigation.goBack} />
       </View>
     );
   }
