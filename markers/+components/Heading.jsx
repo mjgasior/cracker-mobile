@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Animated } from "react-native";
 import { useHeading } from "../+hooks/useHeading";
 import { StyledText } from "../../+components/StyledText";
-import { deg2rad } from "../+utils/distance";
+import { deg2rad } from "../../+utils/distanceCalculator";
 
 export const Heading = () => {
   const heading = useHeading();

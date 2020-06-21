@@ -8,7 +8,7 @@ import {
   getDistanceFromLatLonInKm,
   getAngleInRadians,
   rad2deg,
-} from "./+utils/distance";
+} from "./../+utils/distanceCalculator";
 import { useLocation } from "./+hooks/useLocation";
 import { Marker } from "./+components/Marker";
 import { PositionBar } from "./+components/PositionBar";

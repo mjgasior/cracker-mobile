@@ -2,8 +2,11 @@ import * as React from "react";
 import { Button } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import { Arrow } from "./../../+components/Arrow";
-import { rad2deg } from "../+utils/distance";
 import styled from "styled-components/native";
+import {
+  formatDistance,
+  formatToDegrees,
+} from "./../../+utils/distanceCalculator";
 
 const MarkerContainer = styled.View`
   margin-top: 5px;
@@ -16,6 +19,7 @@ const MarkerContainer = styled.View`
 
 export const Marker = ({ name, distance, angle, heading, onPress }) => {
   const formattedDistance = formatDistance(distance);
+
   const transposedAngle = heading + angle;
   return (
     <MarkerContainer>
@@ -28,17 +32,4 @@ export const Marker = ({ name, distance, angle, heading, onPress }) => {
       <Button title="Show" onPress={onPress} />
     </MarkerContainer>
   );
-};
-
-const formatDistance = (distance) => {
-  if (distance < 1) {
-    const meters = Math.ceil(distance * 1000);
-    return `${meters} m`;
-  }
-  return `${distance.toPrecision(3)} km`;
-};
-
-const formatToDegrees = (radians) => {
-  const degrees = rad2deg(radians);
-  return `${degrees.toPrecision(3)}°`;
 };
