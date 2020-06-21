@@ -6,6 +6,7 @@ const MARKERS = gql`
     markers {
       latitude
       longitude
+      name
       description {
         polish
         english
