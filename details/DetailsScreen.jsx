@@ -13,8 +13,7 @@ import { useLocation } from "../+hooks/useLocation";
 import styled from "styled-components/native";
 
 const TextBlock = styled.Text`
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding: 10px;
 `;
 
 export const DetailsScreen = ({ route }) => {
