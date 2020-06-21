@@ -8,25 +8,26 @@ import {
   getDistanceFromLatLonInKm,
   getAngleInRadians,
   rad2deg,
-} from "./+utils/distance";
+} from "./../+utils/distanceCalculator";
 import { useLocation } from "./+hooks/useLocation";
 import { Marker } from "./+components/Marker";
-import { NavigationBar } from "./+components/NavigationBar";
+import { PositionBar } from "./+components/PositionBar";
+import { ROUTES } from "./../+routing/";
 
-export const MarkersScreen = () => {
-  const [isNavigationBar, setIsNavigationBar] = useState(true);
+export const MarkersScreen = ({ navigation }) => {
+  const [isPositionBar, setIsPositionBar] = useState(true);
   const { data } = useMarkers();
   const location = useLocation();
 
   const onScroll = (e) => {
     const yOffset = e.nativeEvent.contentOffset.y;
-    if (yOffset > 30 && isNavigationBar) {
-      setIsNavigationBar(false);
+    if (yOffset > 30 && isPositionBar) {
+      setIsPositionBar(false);
       return;
     }
 
-    if (yOffset < 20 && !isNavigationBar) {
-      setIsNavigationBar(true);
+    if (yOffset < 20 && !isPositionBar) {
+      setIsPositionBar(true);
     }
   };
 
@@ -40,17 +41,18 @@ export const MarkersScreen = () => {
       >
         <View>
           {canShowMarkers &&
-            data.markers.map(({ position }, i) => {
+            data.markers.map((marker, i) => {
+              const { latitude, longitude, name } = marker;
               const distance = getDistanceFromLatLonInKm(
                 location.coords.latitude,
                 location.coords.longitude,
-                position[0],
-                position[1]
+                latitude,
+                longitude
               );
 
               const angle = getAngleInRadians(
-                position[0],
-                position[1],
+                latitude,
+                longitude,
                 location.coords.latitude,
                 location.coords.longitude
               );
@@ -58,17 +60,17 @@ export const MarkersScreen = () => {
               return (
                 <Marker
                   key={i}
+                  name={name}
                   distance={distance}
                   angle={angle}
                   heading={rad2deg(location.coords.heading)}
+                  onPress={() => navigation.navigate(ROUTES.DETAILS, marker)}
                 />
               );
             })}
         </View>
       </ScrollView>
-      {location && (
-        <NavigationBar location={location} isHidden={isNavigationBar} />
-      )}
+      {location && <PositionBar location={location} isHidden={isPositionBar} />}
     </Container>
   );
 };

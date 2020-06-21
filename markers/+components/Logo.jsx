@@ -8,5 +8,5 @@ const StyledImage = styled.Image`
 `;
 
 export const Logo = () => (
-  <StyledImage source={require("../../assets/images/cracker-name.png")} />
+  <StyledImage source={require("../../+assets/images/cracker-name.png")} />
 );

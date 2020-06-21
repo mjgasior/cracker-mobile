@@ -43,3 +43,16 @@ export function deg2rad(deg) {
 export function rad2deg(rad) {
   return rad * (180 / Math.PI);
 }
+
+export const formatDistance = (distance) => {
+  if (distance < 1) {
+    const meters = Math.ceil(distance * 1000);
+    return `${meters} m`;
+  }
+  return `${distance.toPrecision(3)} km`;
+};
+
+export const formatToDegrees = (radians) => {
+  const degrees = rad2deg(radians);
+  return `${degrees.toPrecision(3)}°`;
+};

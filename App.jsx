@@ -1,12 +1,12 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import { client, ApolloProvider } from "./+utils/apolloSetup";
 
 import { useCachedResources } from "./+hooks/useCachedResources";
-import { BottomTabNavigator } from "./navigation/BottomTabNavigator";
-import LinkingConfiguration from "./navigation/LinkingConfiguration";
+import { MarkersScreen } from "./markers/MarkersScreen";
+import { DetailsScreen } from "./details/DetailsScreen";
+import { ROUTES } from "./+routing";
 
 const Stack = createStackNavigator();
 
@@ -18,22 +18,17 @@ export default function App() {
   } else {
     return (
       <ApolloProvider client={client}>
-        <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="dark-content" />}
-          <NavigationContainer linking={LinkingConfiguration}>
-            <Stack.Navigator>
-              <Stack.Screen name="Root" component={BottomTabNavigator} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </View>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName={ROUTES.MARKERS}>
+            <Stack.Screen name={ROUTES.MARKERS} component={MarkersScreen} />
+            <Stack.Screen
+              name={ROUTES.DETAILS}
+              component={DetailsScreen}
+              options={({ route }) => ({ title: route.params.name })}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
       </ApolloProvider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-});

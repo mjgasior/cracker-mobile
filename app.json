@@ -5,10 +5,10 @@
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./+assets/images/icon.png",
     "scheme": "myapp",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./+assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#0F4C81"
     },
@@ -20,14 +20,14 @@
       "supportsTablet": true
     },
     "web": {
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./+assets/images/favicon.png"
     },
     "android": {
       "package": "com.mjgasior.cracker",
       "versionCode": 1
     },
     "extra": {
-      "apiAddress": "18.157.192.120"
+      "apiAddress": "3.123.197.107"
     }
   }
 }

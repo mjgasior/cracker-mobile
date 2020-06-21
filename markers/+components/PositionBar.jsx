@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Platform, StyleSheet, View, Animated } from "react-native";
 import { StyledText } from "../../+components/StyledText";
-import { deg2rad } from "../+utils/distance";
+import { deg2rad } from "../../+utils/distanceCalculator";
 
-export const NavigationBar = ({ location, isHidden }) => {
+export const PositionBar = ({ location, isHidden }) => {
   const [hideAnimation] = useState(new Animated.Value(0));
 
   useEffect(() => {
