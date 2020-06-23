@@ -12,7 +12,7 @@ import { StyledText } from "../+components/StyledText";
 import { useLocation } from "../+hooks/useLocation";
 import styled from "styled-components/native";
 
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 const TextBlock = styled.Text`
   padding: 10px;
@@ -20,7 +20,7 @@ const TextBlock = styled.Text`
 
 export const DetailsScreen = ({ route }) => {
   const location = useLocation();
-  const { latitude, longitude, description } = route.params;
+  const { latitude, longitude, description, name } = route.params;
 
   if (location) {
     const distance = getDistanceFromLatLonInKm(
@@ -48,9 +48,29 @@ export const DetailsScreen = ({ route }) => {
         <Arrow radians={transposedAngle} />
         <TextBlock>{description.polish}</TextBlock>
         <TextBlock>{description.english}</TextBlock>
-        <View style={styles.container}>
-          <MapView style={styles.mapStyle} />
-        </View>
+        <MapView
+          style={styles.mapStyle}
+          initialRegion={{
+            latitude,
+            longitude,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        >
+          <Marker
+            coordinate={{ latitude, longitude }}
+            title={name}
+            description="Desctiption"
+          />
+          <Marker
+            coordinate={{
+              latitude: location.coords.latitude,
+              longitude: location.coords.longitude,
+            }}
+            title="You are here"
+            description="Desctiption"
+          />
+        </MapView>
       </View>
     );
   }
@@ -58,14 +78,8 @@ export const DetailsScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   mapStyle: {
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    height: 200,
   },
 });
