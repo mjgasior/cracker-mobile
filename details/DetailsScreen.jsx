@@ -39,6 +39,9 @@ export const DetailsScreen = ({ route }) => {
 
     const formattedDistance = formatDistance(distance);
     const transposedAngle = angle + rad2deg(location.coords.heading);
+
+    const latitudeDelta = latitude - location.coords.latitude;
+    const longitudeDelta = longitude - location.coords.longitude;
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Arrow radians={angle} />
@@ -51,10 +54,10 @@ export const DetailsScreen = ({ route }) => {
         <MapView
           style={styles.mapStyle}
           initialRegion={{
-            latitude,
-            longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitude: latitude - latitudeDelta * 0.5,
+            longitude: longitude - longitudeDelta * 0.5,
+            latitudeDelta: Math.abs(latitudeDelta) * 2,
+            longitudeDelta: Math.abs(longitudeDelta) * 2,
           }}
         >
           <Marker
