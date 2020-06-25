@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import React, { useState, useCallback } from "react";
+import { ScrollView } from "react-native-gesture-handler";
 import {
   formatDistance,
   getDistanceFromLatLonInKm,
@@ -7,16 +7,32 @@ import {
 import { StyledText } from "../+components/StyledText";
 import { useLocation } from "../+hooks/useLocation";
 import styled from "styled-components/native";
-
-import MapView, { Marker } from "react-native-maps";
+import { Container } from "./+components/Container";
+import { NavigatorBar } from "./+components/NavigatorBar";
 
 const TextBlock = styled.Text`
   padding: 10px;
 `;
 
 export const DetailsScreen = ({ route }) => {
+  const [isNavigationBar, setIsNavigationBar] = useState(true);
   const location = useLocation();
   const { latitude, longitude, description, name } = route.params;
+
+  const onScroll = useCallback(
+    (e) => {
+      const yOffset = e.nativeEvent.contentOffset.y;
+      if (yOffset > 30 && isNavigationBar) {
+        setIsNavigationBar(false);
+        return;
+      }
+
+      if (yOffset < 20 && !isNavigationBar) {
+        setIsNavigationBar(true);
+      }
+    },
+    [setIsNavigationBar, isNavigationBar]
+  );
 
   if (location) {
     const distance = getDistanceFromLatLonInKm(
@@ -31,35 +47,28 @@ export const DetailsScreen = ({ route }) => {
     const latitudeDelta = latitude - location.coords.latitude;
     const longitudeDelta = longitude - location.coords.longitude;
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <StyledText>This marker is {formattedDistance} away.</StyledText>
-        <TextBlock>{description.polish}</TextBlock>
-        <TextBlock>{description.english}</TextBlock>
-        <MapView
-          style={styles.mapStyle}
+      <Container>
+        <ScrollView
+          contentContainerStyle={{ paddingBottom: 100 }}
+          onScroll={onScroll}
+        >
+          <StyledText>This marker is {formattedDistance} away.</StyledText>
+          <TextBlock>{description.polish}</TextBlock>
+          <TextBlock>{description.english}</TextBlock>
+        </ScrollView>
+        <NavigatorBar
           initialRegion={{
             latitude: latitude - latitudeDelta * 0.5,
             longitude: longitude - longitudeDelta * 0.5,
             latitudeDelta: Math.abs(latitudeDelta) * 2,
             longitudeDelta: Math.abs(longitudeDelta) * 2,
           }}
-          showsUserLocation={true}
-        >
-          <Marker
-            coordinate={{ latitude, longitude }}
-            title={name}
-            description="Desctiption"
-          />
-        </MapView>
-      </View>
+          coordinate={{ latitude, longitude }}
+          name={name}
+          isHidden={isNavigationBar}
+        />
+      </Container>
     );
   }
   return null;
 };
-
-const styles = StyleSheet.create({
-  mapStyle: {
-    width: Dimensions.get("window").width,
-    height: 200,
-  },
-});
