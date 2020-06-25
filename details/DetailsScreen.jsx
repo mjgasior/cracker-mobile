@@ -43,18 +43,11 @@ export const DetailsScreen = ({ route }) => {
             latitudeDelta: Math.abs(latitudeDelta) * 2,
             longitudeDelta: Math.abs(longitudeDelta) * 2,
           }}
+          showsUserLocation={true}
         >
           <Marker
             coordinate={{ latitude, longitude }}
             title={name}
-            description="Desctiption"
-          />
-          <Marker
-            coordinate={{
-              latitude: location.coords.latitude,
-              longitude: location.coords.longitude,
-            }}
-            title="You are here"
             description="Desctiption"
           />
         </MapView>
