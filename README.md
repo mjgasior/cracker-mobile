@@ -19,9 +19,13 @@ This is a React Native app. I got pretty frustrated during the development. If y
 
 ### Prepare API key:
 
-Unfortunately, `react-leaflet` which is a React port of JavaScript library `leafletjs` which provides API for OpenStreetMaps needs a browser DOM, so the only reasonable way to use it is to nest a [WebBrowser component](https://docs.expo.io/versions/latest/sdk/webbrowser/) and set the whole thing inside. There is a package that actually picks up this idea ([react-native-webview-leaflet](https://github.com/reggie3/react-native-webview-leaflet)), but I was not 100% convinced if I want to go that way.
+Unfortunately, `react-leaflet` which is a React port of JavaScript library `leafletjs` which provides API for OpenStreetMaps needs a browser DOM, so the only reasonable way to use it is to nest a [WebBrowser component](https://docs.expo.io/versions/latest/sdk/webbrowser/) and set the whole thing inside. There is a package that actually picks up this idea ([react-native-webview-leaflet](https://github.com/reggie3/react-native-webview-leaflet)), but I was not 100% convinced if I want to go that way. That is why Cracker is using Google Maps API.
 
 For debugger mode on the cell phone, the Google Maps API key is not necessary. If you want to create a release of an `.apk` installation file you will need to configure your Google APIs account.
+
+- [keytool problem](https://stackoverflow.com/questions/6211919/errorkeytool-is-not-recognized-as-an-internal-or-external-command-operable-p)
+- [setup](https://docs.expo.io/versions/latest/sdk/map-view/)
+- [usage](https://stackoverflow.com/questions/57598520/react-native-maps-with-expo)
 
 ### Release a standalone version installed directly on the device:
 
