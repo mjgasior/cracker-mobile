@@ -1,22 +1,22 @@
 import React from "react";
-import { View, Button } from "react-native";
-import { Arrow } from "../+components/Arrow";
+import { ScrollView } from "react-native-gesture-handler";
 import {
-  formatToDegrees,
   formatDistance,
   getDistanceFromLatLonInKm,
-  getAngleInRadians,
-  rad2deg,
 } from "../+utils/distanceCalculator";
 import { StyledText } from "../+components/StyledText";
 import { useLocation } from "../+hooks/useLocation";
 import styled from "styled-components/native";
+import { Container } from "./+components/Container";
+import { NavigatorBar } from "./+components/NavigatorBar";
+import { useHidingBar } from "./../+components/+hooks/useHidingBar";
 
 const TextBlock = styled.Text`
   padding: 10px;
 `;
 
 export const DetailsScreen = ({ route }) => {
+  const [isNavigationBar, onScroll] = useHidingBar(30, 20);
   const location = useLocation();
   const { latitude, longitude, description, name } = route.params;
 
@@ -28,25 +28,32 @@ export const DetailsScreen = ({ route }) => {
       longitude
     );
 
-    const angle = getAngleInRadians(
-      latitude,
-      longitude,
-      location.coords.latitude,
-      location.coords.longitude
-    );
-
     const formattedDistance = formatDistance(distance);
-    const transposedAngle = angle + rad2deg(location.coords.heading);
+
+    const latitudeDelta = latitude - location.coords.latitude;
+    const longitudeDelta = longitude - location.coords.longitude;
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Arrow radians={angle} />
-        <StyledText>
-          This marker is {formattedDistance} away ({formatToDegrees(angle)}).
-        </StyledText>
-        <Arrow radians={transposedAngle} />
-        <TextBlock>{description.polish}</TextBlock>
-        <TextBlock>{description.english}</TextBlock>
-      </View>
+      <Container>
+        <ScrollView
+          contentContainerStyle={{ paddingBottom: 200 }}
+          onScroll={onScroll}
+        >
+          <StyledText>This marker is {formattedDistance} away.</StyledText>
+          <TextBlock>{description.polish}</TextBlock>
+          <TextBlock>{description.english}</TextBlock>
+        </ScrollView>
+        <NavigatorBar
+          initialRegion={{
+            latitude: latitude - latitudeDelta * 0.5,
+            longitude: longitude - longitudeDelta * 0.5,
+            latitudeDelta: Math.abs(latitudeDelta) * 2,
+            longitudeDelta: Math.abs(longitudeDelta) * 2,
+          }}
+          coordinate={{ latitude, longitude }}
+          name={name}
+          isHidden={isNavigationBar}
+        />
+      </Container>
     );
   }
   return null;
