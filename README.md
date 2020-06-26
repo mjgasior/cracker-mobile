@@ -25,14 +25,14 @@ For debugger mode on the cell phone, the Google Maps API key is not necessary. I
 
 0. Create Google APIs account.
 1. Create Google Maps API key without application restrictions (leave the default `None` setting).
-2. Copy the `API Key` and paste it into `app.json` into `android` > `g` > `c` section as in example:
+2. Copy the `API Key` and paste it into `app.json` into `android` > `config` > `googleMaps` > `apiKey` section as in example:
 
 ```
 "android": {
     "package": "com.mjgasior.cracker",
     "versionCode": 1,
     "config": {
-    "googleMaps": {
+        "googleMaps": {
             "apiKey": "<paste API key it here>"
         }
     }
