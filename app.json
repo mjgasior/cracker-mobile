@@ -27,7 +27,7 @@
       "versionCode": 1,
       "config": {
         "googleMaps": {
-          "apiKey": "<android maps key>"
+          "apiKey": "<paste API key it here>"
         }
       }
     },

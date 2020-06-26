@@ -33,8 +33,8 @@ For debugger mode on the cell phone, the Google Maps API key is not necessary. I
     "versionCode": 1,
     "config": {
     "googleMaps": {
-        "apiKey": "<paste it here>"
-    }
+            "apiKey": "<paste API key it here>"
+        }
     }
 },
 ```
