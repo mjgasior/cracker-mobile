@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { HidingBar } from "../../+components/HidingBar";
+import pin from "../../+assets/images/pin.png";
 
 export const NavigatorBar = ({ coordinate, initialRegion, name, isHidden }) => {
   return (
@@ -16,6 +17,7 @@ export const NavigatorBar = ({ coordinate, initialRegion, name, isHidden }) => {
             coordinate={coordinate}
             title={name}
             description="Desctiption"
+            image={pin}
           />
         </MapView>
       </View>
