@@ -15,7 +15,15 @@ This is a React Native app. I got pretty frustrated during the development. If y
 2. Define the API address in the `app.json` file in `apiAddress` property.
 3. To run the project run `yarn start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `yarn/npm start`).
 
-## Release a standalone version installed directly on the device:
+## Release:
+
+### Prepare API key:
+
+Unfortunately, `react-leaflet` which is a React port of JavaScript library `leafletjs` which provides API for OpenStreetMaps needs a browser DOM, so the only reasonable way to use it is to nest a [WebBrowser component](https://docs.expo.io/versions/latest/sdk/webbrowser/) and set the whole thing inside. There is a package that actually picks up this idea ([react-native-webview-leaflet](https://github.com/reggie3/react-native-webview-leaflet)), but I was not 100% convinced if I want to go that way.
+
+For debugger mode on the cell phone, the Google Maps API key is not necessary. If you want to create a release of an `.apk` installation file you will need to configure your Google APIs account.
+
+### Release a standalone version installed directly on the device:
 
 This manual is based on the [Expo documentation](https://docs.expo.io/distribution/building-standalone-apps/).
 
