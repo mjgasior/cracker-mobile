@@ -13,26 +13,12 @@ import { useLocation } from "./+hooks/useLocation";
 import { Marker } from "./+components/Marker";
 import { PositionBar } from "./+components/PositionBar";
 import { ROUTES } from "./../+routing/";
+import { useHidingBar } from "../+components/+hooks/useHidingBar";
 
 export const MarkersScreen = ({ navigation }) => {
-  const [isPositionBar, setIsPositionBar] = useState(true);
+  const [isPositionBar, onScroll] = useHidingBar(30, 20);
   const { data } = useMarkers();
   const location = useLocation();
-
-  const onScroll = useCallback(
-    (e) => {
-      const yOffset = e.nativeEvent.contentOffset.y;
-      if (yOffset > 30 && isPositionBar) {
-        setIsPositionBar(false);
-        return;
-      }
-
-      if (yOffset < 20 && !isPositionBar) {
-        setIsPositionBar(true);
-      }
-    },
-    [setIsPositionBar, isPositionBar]
-  );
 
   const canShowMarkers = location && data && data.markers.length > 0;
   return (

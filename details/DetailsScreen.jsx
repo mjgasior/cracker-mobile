@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import {
   formatDistance,
@@ -9,30 +9,16 @@ import { useLocation } from "../+hooks/useLocation";
 import styled from "styled-components/native";
 import { Container } from "./+components/Container";
 import { NavigatorBar } from "./+components/NavigatorBar";
+import { useHidingBar } from "./../+components/+hooks/useHidingBar";
 
 const TextBlock = styled.Text`
   padding: 10px;
 `;
 
 export const DetailsScreen = ({ route }) => {
-  const [isNavigationBar, setIsNavigationBar] = useState(true);
+  const [isNavigationBar, onScroll] = useHidingBar(30, 20);
   const location = useLocation();
   const { latitude, longitude, description, name } = route.params;
-
-  const onScroll = useCallback(
-    (e) => {
-      const yOffset = e.nativeEvent.contentOffset.y;
-      if (yOffset > 30 && isNavigationBar) {
-        setIsNavigationBar(false);
-        return;
-      }
-
-      if (yOffset < 20 && !isNavigationBar) {
-        setIsNavigationBar(true);
-      }
-    },
-    [setIsNavigationBar, isNavigationBar]
-  );
 
   if (location) {
     const distance = getDistanceFromLatLonInKm(
@@ -49,7 +35,7 @@ export const DetailsScreen = ({ route }) => {
     return (
       <Container>
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 100 }}
+          contentContainerStyle={{ paddingBottom: 200 }}
           onScroll={onScroll}
         >
           <StyledText>This marker is {formattedDistance} away.</StyledText>
