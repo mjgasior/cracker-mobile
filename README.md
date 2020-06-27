@@ -23,8 +23,6 @@ Unfortunately, `react-leaflet` which is a React port of JavaScript library `leaf
 
 For debugger mode on the cell phone, the Google Maps API key is not necessary. If you want to create a release of an `.apk` installation file you will need to configure your Google APIs account. For this, you can use the setup manual that you can find in [MapView documentaion on Expo](https://docs.expo.io/versions/latest/sdk/map-view/), but as a first step I recommend to _not specify_ application restrictions in credentials section. If you do, you might have [a keytool problem](https://stackoverflow.com/questions/6211919/errorkeytool-is-not-recognized-as-an-internal-or-external-command-operable-p) while generating the SHA-1. This instruction is based on [a StackOverflow answer](https://stackoverflow.com/questions/57598520/react-native-maps-with-expo).
 
-**Remember! Don't commit your API key! Paste it only for release purposes.**
-
 0. Create Google APIs account.
 1. Create Google Maps API key without application restrictions (leave the default `None` setting).
 2. Copy the `API Key` and paste it into `app.json` into `android` > `config` > `googleMaps` > `apiKey` section as in example:
@@ -40,6 +38,8 @@ For debugger mode on the cell phone, the Google Maps API key is not necessary. I
     }
 },
 ```
+
+3. After this, proceed with release steps from the section below. **Remember! Don't commit your API key! Delete the key from `app.json` after release.**
 
 ### Release a standalone version installed directly on the device:
 
