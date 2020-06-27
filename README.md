@@ -39,6 +39,8 @@ For debugger mode on the cell phone, the Google Maps API key is not necessary. I
 },
 ```
 
+3. After this, proceed with release steps from the section below. **Remember! Don't commit your API key! Delete the key from `app.json` after release.**
+
 ### Release a standalone version installed directly on the device:
 
 This manual is based on the [Expo documentation](https://docs.expo.io/distribution/building-standalone-apps/).
