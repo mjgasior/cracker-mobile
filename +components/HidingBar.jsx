@@ -9,7 +9,7 @@ export const HidingBar = ({ children, isHidden }) => {
       toValue: isHidden ? 0 : -100,
       duration: 500,
     }).start();
-  }, [isHidden]);
+  }, [isHidden, hideAnimation]);
 
   return (
     <Animated.View

@@ -10,6 +10,7 @@ import styled from "styled-components/native";
 import { Container } from "./+components/Container";
 import { NavigatorBar } from "./+components/NavigatorBar";
 import { useHidingBar } from "./../+components/+hooks/useHidingBar";
+import { Loader } from "../+components/Loader";
 
 const TextBlock = styled.Text`
   padding: 10px;
@@ -20,7 +21,7 @@ export const DetailsScreen = ({ route }) => {
   const location = useLocation();
   const { latitude, longitude, description, name } = route.params;
 
-  if (location) {
+  if (location && isNavigationBar === false) {
     const distance = getDistanceFromLatLonInKm(
       location.coords.latitude,
       location.coords.longitude,
@@ -56,5 +57,5 @@ export const DetailsScreen = ({ route }) => {
       </Container>
     );
   }
-  return null;
+  return <Loader />;
 };
