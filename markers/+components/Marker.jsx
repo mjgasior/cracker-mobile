@@ -1,12 +1,8 @@
 import * as React from "react";
 import { TouchableOpacity } from "react-native";
 import { StyledText } from "../../+components/StyledText";
-import { Arrow } from "./../../+components/Arrow";
 import styled from "styled-components/native";
-import {
-  formatDistance,
-  formatToDegrees,
-} from "./../../+utils/distanceCalculator";
+import { formatDistance } from "./../../+utils/distanceCalculator";
 
 const MarkerContainer = styled.View`
   margin-top: 5px;
@@ -17,19 +13,13 @@ const MarkerContainer = styled.View`
   padding: 3px;
 `;
 
-export const Marker = ({ name, distance, angle, heading, onPress }) => {
+export const Marker = ({ name, distance, angle, onPress }) => {
   const formattedDistance = formatDistance(distance);
-
-  const transposedAngle = heading + angle;
   return (
     <TouchableOpacity onPress={onPress}>
       <MarkerContainer>
-        <Arrow radians={angle} />
         <StyledText>{name}</StyledText>
-        <StyledText>
-          This marker is {formattedDistance} away ({formatToDegrees(angle)}).
-        </StyledText>
-        <Arrow radians={transposedAngle} />
+        <StyledText>This marker is {formattedDistance} away.</StyledText>
       </MarkerContainer>
     </TouchableOpacity>
   );

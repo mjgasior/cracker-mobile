@@ -1,7 +1,5 @@
 import React from "react";
-import { Animated } from "react-native";
 import { StyledText } from "../../+components/StyledText";
-import { deg2rad } from "../../+utils/distanceCalculator";
 import { HidingBar } from "./../../+components/HidingBar";
 import styled from "styled-components/native";
 
@@ -15,16 +13,6 @@ const PositionView = styled.View`
 export const PositionBar = ({ location, isHidden }) => {
   return (
     <HidingBar isHidden={isHidden}>
-      <Animated.View
-        style={{
-          transform: [
-            { rotateZ: -deg2rad(location.coords.heading) },
-            { perspective: 1000 },
-          ],
-        }}
-      >
-        <StyledText>↑</StyledText>
-      </Animated.View>
       <StyledText>Your current location now:</StyledText>
       <PositionView>
         <StyledText>Latitude: {location.coords.latitude}</StyledText>
