@@ -16,18 +16,19 @@ const StyledImage = styled.Image`
 `;
 
 export const Loader = () => {
-  const [pulseAnimation] = useState(new Animated.Value(0.1));
+  const [pulseAnimation] = useState(new Animated.Value(0));
 
   useEffect(() => {
     Animated.loop(
       Animated.sequence([
+        Animated.delay(250),
         Animated.timing(pulseAnimation, {
           toValue: 1,
           duration: 1000,
           easing: Easing.linear,
         }),
         Animated.timing(pulseAnimation, {
-          toValue: 0.1,
+          toValue: 0.25,
           duration: 1000,
           easing: Easing.cubic,
         }),

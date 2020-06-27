@@ -21,7 +21,7 @@ export const DetailsScreen = ({ route }) => {
   const location = useLocation();
   const { latitude, longitude, description, name } = route.params;
 
-  if (location && isNavigationBar === false) {
+  if (location) {
     const distance = getDistanceFromLatLonInKm(
       location.coords.latitude,
       location.coords.longitude,
