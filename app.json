@@ -24,7 +24,12 @@
     },
     "android": {
       "package": "com.mjgasior.cracker",
-      "versionCode": 1
+      "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "<paste API key it here>"
+        }
+      }
     },
     "extra": {
       "apiAddress": "3.123.197.107"
