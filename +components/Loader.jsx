@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Platform, StyleSheet, Animated } from "react-native";
+import { Easing, Animated } from "react-native";
 import styled from "styled-components/native";
 
 const Container = styled.View`
@@ -24,10 +24,12 @@ export const Loader = () => {
         Animated.timing(pulseAnimation, {
           toValue: 1,
           duration: 1000,
+          easing: Easing.linear,
         }),
         Animated.timing(pulseAnimation, {
           toValue: 0.1,
           duration: 1000,
+          easing: Easing.cubic,
         }),
       ]),
       -1
