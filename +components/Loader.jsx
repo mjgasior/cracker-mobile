@@ -16,14 +16,20 @@ const StyledImage = styled.Image`
 `;
 
 export const Loader = () => {
-  const [hideAnimation] = useState(new Animated.Value(0));
+  const [pulseAnimation] = useState(new Animated.Value(0.1));
 
   useEffect(() => {
     Animated.loop(
-      Animated.timing(hideAnimation, {
-        toValue: 1,
-        duration: 1000,
-      }),
+      Animated.sequence([
+        Animated.timing(pulseAnimation, {
+          toValue: 1,
+          duration: 1000,
+        }),
+        Animated.timing(pulseAnimation, {
+          toValue: 0.1,
+          duration: 1000,
+        }),
+      ]),
       -1
     ).start();
   }, []);
@@ -33,7 +39,7 @@ export const Loader = () => {
       <Animated.View
         style={[
           {
-            opacity: hideAnimation,
+            opacity: pulseAnimation,
           },
         ]}
       >
