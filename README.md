@@ -6,7 +6,7 @@ _"Crack Kraków with the Cracker app!"_
 
 Big thanks to :octocat: [thomsa](https://github.com/thomsa) and :octocat: [barlima](https://github.com/barlima) for time and advice. :clap:
 
-This is a React Native app. I got pretty frustrated during the development. If you wonder why, check out [this rant link](https://www.reddit.com/r/reactnative/comments/7syoxz/react_native_is_bad_rant/) which kind of explains some of my feelings towards React Native and Expo. I would say that a dev gets an emotional sinusoid - when something works, it works awesome, but when it doesn't that is when the hell starts.
+This is a React Native app. I got pretty frustrated during the development. If you wonder why, check out [this rant link](https://www.reddit.com/r/reactnative/comments/7syoxz/react_native_is_bad_rant/) which kind of explains some of my feelings towards React Native and Expo. I would say that a dev gets an emotional sinusoid - when something works, it works awesome, but when it doesn't that is when the hell starts. Second part is why Expo CLI, not React Native CLI - [here](https://www.youtube.com/watch?v=uHlAM4ICi1s) and [here](https://www.youtube.com/watch?v=jqWFjzKVn7E) you can find comparisons of those two solutions.
 
 ## Setup:
 
