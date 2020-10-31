@@ -1,5 +1,4 @@
-import { useQuery } from "@apollo/client";
-import { gql } from "apollo-boost";
+import { useQuery, gql } from "@apollo/client";
 
 const MARKERS = gql`
   {

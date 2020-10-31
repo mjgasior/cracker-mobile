@@ -1,12 +1,12 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { client, ApolloProvider } from "./+utils/apolloSetup";
 
 import { useCachedResources } from "./+hooks/useCachedResources";
 import { MarkersScreen } from "./markers/MarkersScreen";
 import { DetailsScreen } from "./details/DetailsScreen";
 import { ROUTES } from "./+routing";
+import { ApolloWrapper } from "./+components/ApolloWrapper";
 
 const Stack = createStackNavigator();
 
@@ -17,7 +17,7 @@ export default function App() {
     return null;
   } else {
     return (
-      <ApolloProvider client={client}>
+      <ApolloWrapper>
         <NavigationContainer>
           <Stack.Navigator initialRouteName={ROUTES.MARKERS}>
             <Stack.Screen name={ROUTES.MARKERS} component={MarkersScreen} />
@@ -28,7 +28,7 @@ export default function App() {
             />
           </Stack.Navigator>
         </NavigationContainer>
-      </ApolloProvider>
+      </ApolloWrapper>
     );
   }
 }
