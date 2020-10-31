@@ -23,11 +23,13 @@ export const Loader = () => {
       Animated.sequence([
         Animated.delay(250),
         Animated.timing(pulseAnimation, {
+          useNativeDriver: false,
           toValue: 1,
           duration: 1000,
           easing: Easing.linear,
         }),
         Animated.timing(pulseAnimation, {
+          useNativeDriver: false,
           toValue: 0.25,
           duration: 1000,
           easing: Easing.cubic,

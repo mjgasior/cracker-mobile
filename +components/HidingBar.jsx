@@ -6,6 +6,7 @@ export const HidingBar = ({ children, isHidden }) => {
 
   useEffect(() => {
     Animated.timing(hideAnimation, {
+      useNativeDriver: false,
       toValue: isHidden ? 0 : -100,
       duration: 500,
     }).start();
