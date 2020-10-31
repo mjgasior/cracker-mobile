@@ -11,9 +11,19 @@ This is a React Native app. I got pretty frustrated during the development. If y
 ## Setup:
 
 0. If you don't have the `expo-cli` already, run `npm install expo-cli --global` (currently used version is `expo-cli@3.21.3` with `node@v12.16.1` and `npm@6.13.4`). It's also good to have the `Expo` [app installed on your phone](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pl). Remember that if you use the Expo phone app, the phone and the laptop have to be in the same network (for example, connected to the same Wi-fi spot).
-1. `yarn`
+1. `npm i`
 2. Define the API address in the `app.json` file in `apiAddress` property.
-3. To run the project run `yarn start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `yarn/npm start`).
+3. To run the project run `npm start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `npm start`).
+
+## Errors:
+
+After recieving [such error](https://stackoverflow.com/questions/64408736/error-execute-app-with-expo-react-native-when-update-of-sdk-38-to-39):
+
+```
+Unable to resolve "./environment/mutewarnings.fx" from "node_modules\expo\build\Expo.Fx.expo.js
+```
+
+Try running the app with the `expo r -c` command that cleans the cache instead of reagular `npm start`.
 
 ## Release:
 
@@ -33,7 +43,7 @@ For debugger mode on the cell phone, the Google Maps API key is not necessary. I
     "versionCode": 1,
     "config": {
         "googleMaps": {
-            "apiKey": "<paste API key it here>"
+            "apiKey": "<paste API key here>"
         }
     }
 },
