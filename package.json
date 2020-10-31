@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",
-    "@expo/vector-icons": "~10.2.0",
+    "@expo/vector-icons": "~10.2.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.5.2",
     "@react-navigation/native": "^5.5.1",
@@ -25,16 +25,16 @@
     "expo-linking": "^1.0.1",
     "expo-splash-screen": "^0.2.3",
     "expo-web-browser": "~8.2.0",
-    "graphql": "^15.1.0",
-    "react": "~16.13.1",
-    "react-dom": "~16.13.1",
+    "graphql": "15.1.0",
+    "react": "~17.0.1",
+    "react-dom": "~17.0.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-maps": "0.26.1",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.9.0",
     "react-native-web": "~0.12.3",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
