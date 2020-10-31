@@ -13,7 +13,7 @@ const MarkerContainer = styled.View`
   padding: 3px;
 `;
 
-export const Marker = ({ name, distance, angle, onPress }) => {
+export const Marker = ({ name, distance, onPress }) => {
   const formattedDistance = formatDistance(distance);
   return (
     <TouchableOpacity onPress={onPress}>

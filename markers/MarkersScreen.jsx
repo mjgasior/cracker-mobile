@@ -29,7 +29,7 @@ export const MarkersScreen = ({ navigation }) => {
           <View>
             {canShowMarkers &&
               data.markers.map((marker, i) => {
-                const { latitude, longitude, name } = marker;
+                const { latitude, longitude, english } = marker;
                 const distance = getDistanceFromLatLonInKm(
                   location.coords.latitude,
                   location.coords.longitude,
@@ -40,7 +40,7 @@ export const MarkersScreen = ({ navigation }) => {
                 return (
                   <Marker
                     key={i}
-                    name={name}
+                    name={english.name}
                     distance={distance}
                     onPress={() => navigation.navigate(ROUTES.DETAILS, marker)}
                   />
