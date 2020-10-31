@@ -1,17 +1,20 @@
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
+import { useQuery, gql } from "@apollo/client";
 
 const MARKERS = gql`
   {
     markers {
+      _id
       latitude
       longitude
-      name
-      description {
-        polish
-        english
+      imageFilename
+      polish {
+        name
+        description
       }
-      _id
+      english {
+        name
+        description
+      }
     }
   }
 `;

@@ -19,7 +19,7 @@ const TextBlock = styled.Text`
 export const DetailsScreen = ({ route }) => {
   const [isNavigationBar, onScroll] = useHidingBar(30, 20);
   const location = useLocation();
-  const { latitude, longitude, description, name } = route.params;
+  const { latitude, longitude, english, polish } = route.params;
 
   if (location) {
     const distance = getDistanceFromLatLonInKm(
@@ -40,8 +40,8 @@ export const DetailsScreen = ({ route }) => {
           onScroll={onScroll}
         >
           <StyledText>This marker is {formattedDistance} away.</StyledText>
-          <TextBlock>{description.polish}</TextBlock>
-          <TextBlock>{description.english}</TextBlock>
+          <TextBlock>{polish.description}</TextBlock>
+          <TextBlock>{english.description}</TextBlock>
         </ScrollView>
         <NavigatorBar
           initialRegion={{
@@ -51,7 +51,7 @@ export const DetailsScreen = ({ route }) => {
             longitudeDelta: Math.abs(longitudeDelta) * 2,
           }}
           coordinate={{ latitude, longitude }}
-          name={name}
+          name={english.name}
           isHidden={isNavigationBar}
         />
       </Container>
