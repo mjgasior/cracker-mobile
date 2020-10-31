@@ -62,7 +62,7 @@ Success
 
 ## Packages:
 
-- `@apollo/client` - integration with Apollo based on React hooks
+- `@apollo/client` - this single package contains virtually everything you need to set up Apollo Client - it includes the in-memory cache, local state management, error handling, and a React-based view layer
 - `graphql` - the JavaScript reference implementation for GraphQL, a query language for APIs created by Facebook
 - `react-native-maps` - provides a Map component that uses Apple Maps or Google Maps on iOS and Google Maps on Android
 - `styled-components` - allows to write plain CSS in components without worrying about class name collisions, it helps to write CSS that's scoped to a single component and does not leak to any other element in the page
