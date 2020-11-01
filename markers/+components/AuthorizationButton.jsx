@@ -1,8 +1,9 @@
-import * as React from "react";
+import React, { useCallback, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import styled from "styled-components/native";
 import * as AuthSessionNew from "expo-auth-session";
+import JwtDecode from "jwt-decode";
 
 const ButtonContainer = styled.View`
   margin-top: 5px;
@@ -14,10 +15,18 @@ const ButtonContainer = styled.View`
 `;
 
 export const AuthorizationButton = () => {
+  const [name, setName] = useState("");
+
+  const onPressHandler = useCallback(async () => {
+    const result = await login();
+    setName(result.name);
+  }, [setName]);
+
   return (
-    <TouchableOpacity onPress={login}>
+    <TouchableOpacity onPress={onPressHandler}>
       <ButtonContainer>
         <StyledText>Log in</StyledText>
+        <StyledText>Hello {name}</StyledText>
       </ButtonContainer>
     </TouchableOpacity>
   );
@@ -30,6 +39,7 @@ const login = async () => {
 
   console.log(redirectUrl);
 
+  console.error("CLIENT ID NOT SET!");
   // Structure the auth parameters and URL
   const params = {
     redirect_uri: redirectUrl,
@@ -39,7 +49,7 @@ const login = async () => {
     response_type: "token id_token",
     nonce: "nonce", // ideally, this will be a random value
     rememberLastLogin: true,
-    client_id: "PASTE ID HERE",
+    client_id: "",
     scope: "openid profile",
     audience: `https://cracker.app`,
   };
@@ -75,7 +85,33 @@ const handleLoginResponse = (response) => {
   "token_type": "Bearer",
     }
   */
-  return response.params.id_token;
+
+  const decodedJwtIdToken = JwtDecode(response.params.id_token);
+  console.log(decodedJwtIdToken);
+
+  /*
+Object {
+  "at_hash": "3T2WKPdwfLndzpgkiHU99Q",
+  "aud": "KZZWiCz61h8DNxs1DSYxPM7xfxkLDEKF",
+  "exp": 1604288416,
+  "https://www.crackerapp.com": Object {
+    "permissions": Array [
+      "create:markers",
+      "delete:markers",
+      "update:markers",
+    ],
+  },
+  "iat": 1604252416,
+  "iss": "https://fulbert.eu.auth0.com/",
+  "name": "michaljgasior@gmail.com",
+  "nickname": "michaljgasior",
+  "nonce": "nonce",
+  "picture": "https://s.gravatar.com/avatar/905aaa7f9ebebb88f75ecf8469305547?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fmi.png",
+  "sub": "auth0|5c598bee68a70b544c493993",
+  "updated_at": "2020-11-01T17:23:24.644Z",
+}
+  */
+  return decodedJwtIdToken;
 };
 
 const toQueryString = (params) =>

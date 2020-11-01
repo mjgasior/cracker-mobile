@@ -87,7 +87,9 @@ Success
 ## Packages:
 
 - `@apollo/client` - this single package contains virtually everything you need to set up Apollo Client - it includes the in-memory cache, local state management, error handling, and a React-based view layer
+- `expo-auth-session` - the easiest way to add web browser based authentication (for example, browser-based OAuth flows) to an Expo app, built on top of `WebBrowser`, `Crypto`, and `Random`
 - `graphql` - the JavaScript reference implementation for GraphQL, a query language for APIs created by Facebook
+- `jwt-decode` - a small browser library that helps decoding JWTs token which are Base64Url encoded
 - `react-native-maps` - provides a Map component that uses Apple Maps or Google Maps on iOS and Google Maps on Android
 - `styled-components` - allows to write plain CSS in components without worrying about class name collisions, it helps to write CSS that's scoped to a single component and does not leak to any other element in the page
 
