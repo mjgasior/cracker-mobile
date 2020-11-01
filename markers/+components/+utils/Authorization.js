@@ -2,9 +2,8 @@ import * as AuthSession from "expo-auth-session";
 import JwtDecode from "jwt-decode";
 
 export const login = async () => {
-  const redirectUrl = AuthSession.getRedirectUrl();
+  const redirectUrl = AuthSession.makeRedirectUri({ useProxy: true });
 
-  console.error("CLIENT ID NOT SET!");
   const params = {
     redirect_uri: redirectUrl,
     response_type: "token id_token",
