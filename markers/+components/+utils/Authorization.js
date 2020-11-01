@@ -1,8 +1,8 @@
-import * as AuthSessionNew from "expo-auth-session";
+import * as AuthSession from "expo-auth-session";
 import JwtDecode from "jwt-decode";
 
 export const login = async () => {
-  const redirectUrl = AuthSessionNew.getRedirectUrl();
+  const redirectUrl = AuthSession.getRedirectUrl();
 
   console.error("CLIENT ID NOT SET!");
   const params = {
@@ -18,7 +18,7 @@ export const login = async () => {
   const queryParams = toQueryString(params);
   const authUrl = `https://fulbert.eu.auth0.com/authorize${queryParams}`;
 
-  const response = await AuthSessionNew.startAsync({
+  const response = await AuthSession.startAsync({
     authUrl,
     showInRecents: true,
   });
