@@ -8,12 +8,20 @@ Big thanks to :octocat: [thomsa](https://github.com/thomsa) and :octocat: [barli
 
 This is a React Native app. I got pretty frustrated during the development. If you wonder why, check out [this rant link](https://www.reddit.com/r/reactnative/comments/7syoxz/react_native_is_bad_rant/) which kind of explains some of my feelings towards React Native and Expo. I would say that a dev gets an emotional sinusoid - when something works, it works awesome, but when it doesn't that is when the hell starts. Second part is why Expo CLI, not React Native CLI - [here](https://www.youtube.com/watch?v=uHlAM4ICi1s) and [here](https://www.youtube.com/watch?v=jqWFjzKVn7E) you can find comparisons of those two solutions.
 
+Please remember, that this is just a mobile client for [Cracker App](https://github.com/mjgasior/cracker-app), so it needs to have proper endpoints to work.
+
 ## Setup:
 
 0. If you don't have the `expo-cli` already, run `npm install expo-cli --global` (currently used version is `expo-cli@3.21.3` with `node@v12.16.1` and `npm@6.13.4`). It's also good to have the `Expo` [app installed on your phone](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pl). Remember that if you use the Expo phone app, the phone and the laptop have to be in the same network (for example, connected to the same Wi-fi spot).
 1. `npm i`
 2. Define the API address in the `app.json` file in `apiAddress` property.
 3. To run the project run `npm start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `npm start`).
+
+## Auth0 setup:
+
+0. I assume that you already have Auth0 account set up as described in [Cracker App setup instructions](https://github.com/mjgasior/cracker-app#authorization-setup).
+1. Select `Applications` in side menu and click `+ Create application` button.
+2. Write `Cracker Mobile` in the `Name` input, keep the `Native` option selected and click `Create`.
 
 ## Errors:
 
