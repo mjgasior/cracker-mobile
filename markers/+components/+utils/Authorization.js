@@ -1,5 +1,6 @@
 import * as AuthSession from "expo-auth-session";
 import JwtDecode from "jwt-decode";
+import Constants from "expo-constants";
 
 export const login = async () => {
   const redirectUrl = AuthSession.makeRedirectUri({ useProxy: true });
@@ -9,13 +10,13 @@ export const login = async () => {
     response_type: "token id_token",
     nonce: "nonce",
     rememberLastLogin: true,
-    client_id: "",
+    client_id: Constants.manifest.extra.clientId,
     scope: "openid profile",
     audience: "https://cracker.app",
   };
 
   const queryParams = toQueryString(params);
-  const authUrl = `https://fulbert.eu.auth0.com/authorize${queryParams}`;
+  const authUrl = `https://${Constants.manifest.extra.authDomain}/authorize${queryParams}`;
 
   const response = await AuthSession.startAsync({
     authUrl,

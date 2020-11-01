@@ -12,12 +12,9 @@ Please remember, that this is just a mobile client for [Cracker App](https://git
 
 ## Setup:
 
-0. If you don't have the `expo-cli` already, run `npm install expo-cli --global` (currently used version is `expo-cli@3.21.3` with `node@v12.16.1` and `npm@6.13.4`). It's also good to have the `Expo` [app installed on your phone](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pl). Remember that if you use the Expo phone app, the phone and the laptop have to be in the same network (for example, connected to the same Wi-fi spot).
-1. `npm i`
-2. Define the API address in the `app.json` file in `apiAddress` property.
-3. To run the project run `npm start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `npm start`).
+If you don't have the `expo-cli` already, run `npm install expo-cli --global` (currently used version is `expo-cli@3.21.3` with `node@v12.16.1` and `npm@6.13.4`). It's also good to have the `Expo` [app installed on your phone](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pl). Remember that if you use the Expo phone app, the phone and the laptop have to be in the same network (for example, connected to the same Wi-fi spot).
 
-## Auth0 setup:
+### Auth0 setup:
 
 0. I assume that you already have Auth0 account set up as described in [Cracker App setup instructions](https://github.com/mjgasior/cracker-app#authorization-setup).
 1. Select `Applications` in side menu and click `+ Create application` button.
@@ -28,6 +25,26 @@ Please remember, that this is just a mobile client for [Cracker App](https://git
 ```
 https://auth.expo.io/@mjgasior/cracker
 ```
+
+5. Create an `app.json` file, copy the configuration from below and paste it in the created JSON file:
+
+```
+{
+  "expo": {
+    "authDomain": "your.address.at.auth0.com",
+    "clientId": "JSFDGjfgj4tjgsqtjzDSJSFGJ5JDFJdf",
+    "apiAddress": "cracker.red",
+  }
+}
+```
+
+6. Go back to `Cracker Mobile` settings in Auth0, to `Basic Information` section in `Settings` and copy the `Client ID` section. Paste it in `"clientId"` property of the `app.json` file.
+7. Go back to `Cracker Mobile` settings in Auth0, to `Basic Information` section in `Settings` and copy the `Domain` section. Paste it in `"authDomain"` property of the `app.json` file.
+
+### Running the application:
+
+1. Run `npm i` to install all the packages.
+2. To run the project run `npm start` (please remember, that a bare init of `expo-cli` can have `expo start` instead of `npm start`).
 
 ## Errors:
 
@@ -100,4 +117,5 @@ Success
 - [Calculate distance between two latitude-longitude points? (Haversine formula)](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
 - [Heading API in Expo](https://docs.expo.io/versions/latest/sdk/location/#locationgetheadingasync)
 - [Latitude/Longitude Distance Calculator](https://www.nhc.noaa.gov/gccalc.shtml)
+- [Storing sensitive info in React Native](https://reactnative.dev/docs/security#storing-sensitive-info)
 - [Unsure Programmer YouTube channel about React Native](https://www.youtube.com/channel/UCiNWv52iO_OAdZ12kslG4Cg/videos)
