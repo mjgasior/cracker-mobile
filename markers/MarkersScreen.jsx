@@ -11,6 +11,7 @@ import { PositionBar } from "./+components/PositionBar";
 import { ROUTES } from "./../+routing/";
 import { useHidingBar } from "../+components/+hooks/useHidingBar";
 import { Loader } from "./../+components/Loader";
+import { AuthorizationButton } from "./+components/AuthorizationButton";
 
 export const MarkersScreen = ({ navigation }) => {
   const [isPositionBar, onScroll] = useHidingBar(30, 20);
@@ -27,6 +28,7 @@ export const MarkersScreen = ({ navigation }) => {
           contentContainerStyle={{ paddingBottom: 100 }}
         >
           <View>
+            <AuthorizationButton />
             {canShowMarkers &&
               data.markers.map((marker, i) => {
                 const { latitude, longitude, english } = marker;

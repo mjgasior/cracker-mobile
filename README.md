@@ -87,6 +87,10 @@ Success
 
 ## Resources:
 
+- [AppAuth documentation](https://docs.expo.io/versions/latest/sdk/app-auth/)
+- [Auth0, Expo, and React Native: Authorization Code Grant Flow with PKCE](https://chrisfrewin.medium.com/auth0-expo-and-react-native-authorization-code-grant-flow-with-pkce-d612d098f5f3)
+- [Auth0 with Expo example project](https://community.auth0.com/t/auth0-react-native-expo-updated-example-on-github/37154/6)
+- [AuthSession documentation](https://docs.expo.io/versions/latest/sdk/auth-session/)
 - [Calculate distance between two latitude-longitude points? (Haversine formula)](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
 - [Heading API in Expo](https://docs.expo.io/versions/latest/sdk/location/#locationgetheadingasync)
 - [Latitude/Longitude Distance Calculator](https://www.nhc.noaa.gov/gccalc.shtml)
