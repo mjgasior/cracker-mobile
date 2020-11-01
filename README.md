@@ -22,6 +22,12 @@ Please remember, that this is just a mobile client for [Cracker App](https://git
 0. I assume that you already have Auth0 account set up as described in [Cracker App setup instructions](https://github.com/mjgasior/cracker-app#authorization-setup).
 1. Select `Applications` in side menu and click `+ Create application` button.
 2. Write `Cracker Mobile` in the `Name` input, keep the `Native` option selected and click `Create`.
+3. Go to `Settings` of the `Cracker Mobile` client and find the `Allowed Callback URLs` in `Application URIs` section.
+4. Add the `auth.expo.io` reditection URL which has the `https://auth.expo.io/@your-username/your-app-slug` format as described in the [`AuthSession` documentation](https://docs.expo.io/versions/latest/sdk/auth-session/#it-makes-redirect-url-allowlists-easier-to), for example (the `slug` value is in `app.json` and for this project it is `cracker`):
+
+```
+https://auth.expo.io/@mjgasior/cracker
+```
 
 ## Errors:
 
@@ -87,10 +93,8 @@ Success
 
 ## Resources:
 
-- [AppAuth documentation](https://docs.expo.io/versions/latest/sdk/app-auth/)
 - [Auth0, Expo, and React Native: Authorization Code Grant Flow with PKCE](https://chrisfrewin.medium.com/auth0-expo-and-react-native-authorization-code-grant-flow-with-pkce-d612d098f5f3)
 - [Auth0 with Expo example project](https://community.auth0.com/t/auth0-react-native-expo-updated-example-on-github/37154/6)
-- [AuthSession documentation](https://docs.expo.io/versions/latest/sdk/auth-session/)
 - [Calculate distance between two latitude-longitude points? (Haversine formula)](https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula)
 - [Heading API in Expo](https://docs.expo.io/versions/latest/sdk/location/#locationgetheadingasync)
 - [Latitude/Longitude Distance Calculator](https://www.nhc.noaa.gov/gccalc.shtml)
