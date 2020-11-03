@@ -31,7 +31,7 @@ const handleLoginResponse = (response) => {
     return;
   }
 
-  console.log(response.params);
+  // console.log(response.params);
 
   /*
     Object {
@@ -45,9 +45,12 @@ const handleLoginResponse = (response) => {
     */
 
   const decodedJwtIdToken = JwtDecode(response.params.id_token);
-  console.log(decodedJwtIdToken);
+  // console.log(decodedJwtIdToken);
 
-  return decodedJwtIdToken;
+  return {
+    idToken: decodedJwtIdToken,
+    accessToken: response.params.access_token,
+  };
 };
 
 const toQueryString = (params) =>

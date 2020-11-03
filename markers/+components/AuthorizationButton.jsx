@@ -3,6 +3,7 @@ import { TouchableOpacity } from "react-native";
 import { StyledText } from "../../+components/StyledText";
 import styled from "styled-components/native";
 import { login } from "./+utils/Authorization";
+import { useAuthorizationContext } from "../../+hooks/useAuthorizationContext";
 
 const ButtonContainer = styled.View`
   margin-top: 5px;
@@ -15,11 +16,13 @@ const ButtonContainer = styled.View`
 
 export const AuthorizationButton = () => {
   const [name, setName] = useState("");
+  const { setAuth } = useAuthorizationContext();
 
   const onPressHandler = useCallback(async () => {
     const result = await login();
-    setName(result.name);
-  }, [setName]);
+    setName(result.idToken.name);
+    setAuth(result.accessToken);
+  }, [setName, setAuth]);
 
   return (
     <TouchableOpacity onPress={onPressHandler}>
