@@ -16,7 +16,7 @@ const ButtonContainer = styled.View`
 
 export const AuthorizationButton = () => {
   const [name, setName] = useState("");
-  const { setAuth } = useAuthorizationContext();
+  const { setAuth, isAuthorized } = useAuthorizationContext();
 
   const onPressHandler = useCallback(async () => {
     const result = await login();
@@ -25,11 +25,14 @@ export const AuthorizationButton = () => {
   }, [setName, setAuth]);
 
   return (
-    <TouchableOpacity onPress={onPressHandler}>
-      <ButtonContainer>
-        <StyledText>Log in</StyledText>
-        <StyledText>Hello {name}</StyledText>
-      </ButtonContainer>
-    </TouchableOpacity>
+    <>
+      <TouchableOpacity onPress={onPressHandler}>
+        <ButtonContainer>
+          <StyledText>Log in</StyledText>
+          <StyledText>Hello {name}</StyledText>
+        </ButtonContainer>
+      </TouchableOpacity>
+      {isAuthorized && <StyledText>Authorized</StyledText>}
+    </>
   );
 };

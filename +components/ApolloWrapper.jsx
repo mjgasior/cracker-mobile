@@ -4,7 +4,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { useAuthorizationContext } from "../+hooks/useAuthorizationContext";
 
 export const ApolloWrapper = ({ children }) => {
-  const { auth } = useAuthorizationContext();
+  const { auth, setIsAuthorized } = useAuthorizationContext();
 
   console.log(auth);
 
@@ -12,6 +12,10 @@ export const ApolloWrapper = ({ children }) => {
     uri: `https://${Constants.manifest.extra.apiAddress}/api`,
     cache: new InMemoryCache(),
     request: (operation) => {
+      if (auth) {
+        setIsAuthorized(true);
+      }
+
       operation.setContext((context) => ({
         headers: {
           ...context.headers,
