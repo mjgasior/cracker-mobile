@@ -33,7 +33,7 @@ export const AuthorizationButton = () => {
           <StyledText>Hello {name}</StyledText>
         </ButtonContainer>
       </TouchableOpacity>
-      {isAuthorized && <Version />}
+      {auth && <Version />}
     </>
   );
 };

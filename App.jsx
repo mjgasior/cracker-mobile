@@ -6,7 +6,7 @@ import { useCachedResources } from "./+hooks/useCachedResources";
 import { MarkersScreen } from "./markers/MarkersScreen";
 import { DetailsScreen } from "./details/DetailsScreen";
 import { ROUTES } from "./+routing";
-import { ApolloWrapper } from "./+components/ApolloWrapper";
+import { ApolloWrapper } from "./+components/CrackerApolloWrapper2";
 import { Auth0Wrapper } from "./+components/Auth0Wrapper";
 
 const Stack = createStackNavigator();

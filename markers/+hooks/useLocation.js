@@ -21,7 +21,7 @@ export const useLocation = () => {
               accuracy: Location.Accuracy.Highest,
               enableHighAccuracy: true,
               distanceInterval: 0,
-              timeInterval: 1000,
+              timeInterval: 100000,
             },
             async (locationData) => {
               const headingData = await Location.getHeadingAsync();
@@ -38,11 +38,7 @@ export const useLocation = () => {
 
     setLocationWithPerms();
 
-    return () => {
-      if (subscription) {
-        subscription.remove();
-      }
-    };
+    return () => subscription.remove();
   }, []);
 
   return location;

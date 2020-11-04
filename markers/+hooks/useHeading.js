@@ -28,11 +28,7 @@ export const useHeading = () => {
 
     setHeadingWithPerms();
 
-    return () => {
-      if (subscription) {
-        subscription.remove();
-      }
-    };
+    return () => subscription.remove();
   }, []);
 
   return heading;
