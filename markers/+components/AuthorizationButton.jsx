@@ -4,6 +4,7 @@ import { StyledText } from "../../+components/StyledText";
 import styled from "styled-components/native";
 import { login } from "./+utils/Authorization";
 import { useAuthorizationContext } from "../../+hooks/useAuthorizationContext";
+import { Version } from "./Version";
 
 const ButtonContainer = styled.View`
   margin-top: 5px;
@@ -16,7 +17,7 @@ const ButtonContainer = styled.View`
 
 export const AuthorizationButton = () => {
   const [name, setName] = useState("");
-  const { setAuth, isAuthorized } = useAuthorizationContext();
+  const { setAuth, isAuthorized, auth } = useAuthorizationContext();
 
   const onPressHandler = useCallback(async () => {
     const result = await login();
@@ -32,7 +33,7 @@ export const AuthorizationButton = () => {
           <StyledText>Hello {name}</StyledText>
         </ButtonContainer>
       </TouchableOpacity>
-      {isAuthorized && <StyledText>Authorized</StyledText>}
+      {isAuthorized && <Version />}
     </>
   );
 };
