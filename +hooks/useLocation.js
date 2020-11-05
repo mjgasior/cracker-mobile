@@ -38,7 +38,7 @@ export const useLocation = () => {
 
     setLocationWithPerms();
 
-    return () => subscription.remove();
+    return () => subscription && subscription.remove();
   }, []);
 
   return location;
